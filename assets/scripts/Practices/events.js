@@ -19,9 +19,9 @@ const onEditPractice = function (event) {
   const practiceId = $(event.target).closest('section').data('id')
   const practiceData = getFormFields(event.target)
   // console.log(practiceId)
-  api.removePractice(practiceId, practiceData)
-    .then(() => onShowPractices(event))
-    .catch(ui.removePracticeFailure)
+  api.editPractice(practiceId, practiceData)
+    .then(ui.editPracticeSuccess(onShowPractices(event)))
+    .catch()
 }
 
 const addHandlers = () => {
@@ -29,7 +29,7 @@ const addHandlers = () => {
   // You can't add an event for dom elements that don't exist until after the
   //  page loads.
   $('.practice_display').on('click', '.remove_button', onRemovePractice)
-  $('.practice_display').on('click', '.edit_button', onEditPractice)
+  $('.practice_display').on('submit', '.edit_form', onEditPractice)
 }
 
 const onShowPractices = function (event) {

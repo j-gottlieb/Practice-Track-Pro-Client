@@ -20,7 +20,7 @@ const onEditPractice = function (event) {
   const practiceData = getFormFields(event.target)
   // console.log(practiceId)
   api.editPractice(practiceId, practiceData)
-    .then(ui.editPracticeSuccess(onShowPractices(event)))
+    .then(ui.editPracticeSuccess)
     .catch()
 }
 

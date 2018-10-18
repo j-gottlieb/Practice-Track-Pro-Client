@@ -33,7 +33,7 @@ const addHandlers = () => {
 }
 
 const onShowPractices = function (event) {
-  event.preventDefault()
+  // event.preventDefault()
   // const credentials = getFormFields(event.target)
   api.showPractices()
     .then(ui.showPracticesSuccess)

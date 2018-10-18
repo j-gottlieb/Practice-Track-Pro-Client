@@ -1,8 +1,10 @@
 const store = require('../store.js')
 const showGoalsTemplate = require('../templates/goals-listing.handlebars')
+const showProgress = require('./progress.js')
 
 const showGoalsSuccess = function (response) {
-  // console.log(response)
+  store.goals = response.goals
+  showProgress.bar()
   const showGoalsHtml = showGoalsTemplate({ goals: response.goals })
   if (response.goals.length > 0) {
     $('.goal_display').html(showGoalsHtml)
@@ -23,6 +25,7 @@ const editGoalSuccess = () => {
 const addGoalSuccess = () => {
   $('#add-goal-form').trigger('reset')
 }
+
 module.exports = {
   showGoalsSuccess,
   removeGoalSuccess,

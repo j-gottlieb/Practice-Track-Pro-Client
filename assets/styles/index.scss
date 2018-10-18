@@ -28,9 +28,14 @@ body {
 }
 
 .remove_button {
-    border: 1px solid black;
-    font-size: 12px;
-    height: 40px;
-    width: 200px;
-    color: red;
-    }
+  border: 1px solid black;
+  font-size: 12px;
+  height: 40px;
+  width: 200px;
+  color: red;
+}
+
+.goal_display {
+  width: 300px;
+  margin: 20px;
+}

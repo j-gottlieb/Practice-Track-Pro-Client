@@ -19,6 +19,7 @@ const signUpFailure = function () {
 const signInSuccess = function (response) {
   store.user = response.user
   goalEvents.onShowGoals()
+  practiceEvents.onShowPractices()
   $('#display-message').html('').hide()
   $('#sign-in-form').trigger('reset')
   $('#display-message').css('color', 'green')

@@ -1,1 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  height: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.forms {
+  min-height: 80px;
+}
+
+.container {
+  height: 100%;
+}

@@ -5,14 +5,8 @@
     <h1 data-id="{{goal.id}}"> <small>Daily: {{goal.daily}}
     <br>
     Weekly: {{goal.weekly}}
+    <br>
+    Monthly: {{goal.monthly}}
   </small></h1>
-      <br>
-      <button type='submit' class="remove_button col btn btn-default">Delete this goal</button>
-      <p>Edit this goal below:</p>
-      <form class="single-form edit_form">
-        <input type='date' name="date" placeholder="Enter Date" />
-        <input type='number' name="duration" placeholder="Enter Duration" />
-        <input type="submit" />
-      </form>
   </section>
 {{/each}}

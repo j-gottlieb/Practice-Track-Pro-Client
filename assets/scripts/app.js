@@ -1,6 +1,7 @@
 'use strict'
 const authEvents = require('./Auth/events.js')
 const practiceEvents = require('./Practices/events.js')
+const goalEvents = require('./Goals/events.js')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -16,6 +17,8 @@ $(() => {
   $('#sign-up-btn').on('click', authEvents.onShowSignUp)
   $('#sign-in-btn').on('click', authEvents.onShowSignIn)
   $('#change-password-btn').on('click', authEvents.onShowChangePassword)
+  // Goal Events
+  goalEvents.addHandlers()
   // Practice events
   practiceEvents.addHandlers()
   $('#show-practices-btn').on('click', practiceEvents.onShowPractices)

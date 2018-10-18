@@ -1,5 +1,5 @@
 const store = require('../store.js')
-const goalEvents = require('../Goals/events.js')
+// const goalEvents = require('../Goals/events.js')
 const practiceEvents = require('../Practices/events.js')
 
 const signUpSuccess = function (response) {
@@ -20,7 +20,7 @@ const signUpFailure = function () {
 const signInSuccess = function (response) {
   store.user = response.user
   practiceEvents.onShowPractices()
-  goalEvents.onShowGoals()
+  // goalEvents.onShowGoals()
   $('#display-message').html('').hide()
   $('#sign-in-form').trigger('reset')
   $('#display-message').css('color', 'green')

@@ -7,20 +7,19 @@ const onRemovePractice = function (event) {
   event.preventDefault()
   const practiceId = $(event.target).closest('section').data('id')
   // console.log(practiceId)
-  if (confirm('Are you sure you want to delete this practice?')) {
-    api.removePractice(practiceId)
-      .then(() => onShowPractices(event))
-      .catch(ui.removePracticeFailure)
-  }
+  api.removePractice(practiceId)
+    .then(() => onShowPractices(event))
+    .catch(ui.removePracticeFailure)
 }
 
 const onEditPractice = function (event) {
   event.preventDefault()
+  $('.edit_form').trigger('reset')
   const practiceId = $(event.target).closest('section').data('id')
   const practiceData = getFormFields(event.target)
   // console.log(practiceId)
   api.editPractice(practiceId, practiceData)
-    .then(ui.editPracticeSuccess(onShowPractices(event)))
+    .then(() => onShowPractices(event))
     .catch()
 }
 
@@ -33,7 +32,7 @@ const addHandlers = () => {
 }
 
 const onShowPractices = function (event) {
-  event.preventDefault()
+  // event.preventDefault()
   // const credentials = getFormFields(event.target)
   api.showPractices()
     .then(ui.showPracticesSuccess)
@@ -44,8 +43,9 @@ const onAddPractice = function (event) {
   event.preventDefault()
   const practiceData = getFormFields(event.target)
   api.addPractice(practiceData)
-    .then(ui.addPracticeSuccess(onShowPractices(event)))
+    .then(() => onShowPractices(event))
     .catch()
+  $('#add-practice-form').trigger('reset')
 }
 
 module.exports = {

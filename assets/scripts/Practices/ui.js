@@ -2,6 +2,7 @@ const store = require('../store.js')
 const showPracticesTemplate = require('../templates/practices-listing.handlebars')
 
 const showPracticesSuccess = function (response) {
+  store.practices = response.practices
   // console.log(response)
   const showPracticesHtml = showPracticesTemplate({ practices: response.practices })
   if (response.practices.length > 0) {
@@ -11,9 +12,8 @@ const showPracticesSuccess = function (response) {
   }
 }
 
-const removePracticeSuccess = (callback) => {
+const removePracticeSuccess = () => {
   $(event.target.getAttribute('data-id')).empty()
-  callback()
 }
 
 const editPracticeSuccess = () => {

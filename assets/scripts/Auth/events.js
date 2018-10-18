@@ -7,8 +7,8 @@ const onSignUp = function (event) {
   event.preventDefault()
   const credentials = getFormFields(event.target)
   api.signUp(credentials)
-    .then(console.log)
-    .catch(console.log)
+    .then(ui.signUpSuccess)
+    .catch(ui.signUpFailure)
 }
 
 const onShowSignUp = function () {

@@ -26,7 +26,7 @@ const signInSuccess = function (response) {
 }
 
 const signInFailure = function () {
-  console.log('we signed in!')
+  // console.log('we signed in!')
   $('#display-message').html('').hide()
   $('#display-message').text('Something went wrong, please try again').fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'red')
@@ -50,6 +50,8 @@ const changePasswordFailure = function () {
 
 const signOutSuccess = function () {
   $('#display-message').html('').hide()
+  $('.practice_display').html('')
+  $('.edit_form, #add-practices-form').trigger('reset')
   $('#sign-up-form, #sign-in-form, #change-password-form').trigger('reset')
   $('#display-message').text(`You have successfully signed out`).fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'green')

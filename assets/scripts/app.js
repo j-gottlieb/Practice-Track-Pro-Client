@@ -1,5 +1,5 @@
 'use strict'
-const authEvents = require('./auth/events.js')
+const authEvents = require('./Auth/events.js')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 

@@ -6,7 +6,7 @@ const ui = require('./ui.js')
 const onRemovePractice = function (event) {
   event.preventDefault()
   const practiceId = $(event.target).closest('section').data('id')
-  console.log(practiceId)
+  // console.log(practiceId)
   if (confirm('Are you sure you want to delete this practice?')) {
     api.removePractice(practiceId)
       .then(() => onShowPractices(event))
@@ -14,11 +14,22 @@ const onRemovePractice = function (event) {
   }
 }
 
+const onEditPractice = function (event) {
+  event.preventDefault()
+  const practiceId = $(event.target).closest('section').data('id')
+  const practiceData = getFormFields(event.target)
+  // console.log(practiceId)
+  api.removePractice(practiceId, practiceData)
+    .then(() => onShowPractices(event))
+    .catch(ui.removePracticeFailure)
+}
+
 const addHandlers = () => {
   // this allows each book to be clickable after all the books have loaded.
   // You can't add an event for dom elements that don't exist until after the
   //  page loads.
-  $('.practice_display').on('click', 'button', onRemovePractice)
+  $('.practice_display').on('click', '.remove_button', onRemovePractice)
+  $('.practice_display').on('click', '.edit_button', onEditPractice)
 }
 
 const onShowPractices = function (event) {
@@ -26,11 +37,21 @@ const onShowPractices = function (event) {
   // const credentials = getFormFields(event.target)
   api.showPractices()
     .then(ui.showPracticesSuccess)
+    .catch()
+}
+
+const onAddPractice = function (event) {
+  event.preventDefault()
+  const practiceData = getFormFields(event.target)
+  api.addPractice(practiceData)
+    .then(() => onShowPractices(event))
     .catch(console.log)
 }
 
 module.exports = {
   onShowPractices,
   addHandlers,
-  onRemovePractice
+  onRemovePractice,
+  onAddPractice,
+  onEditPractice
 }

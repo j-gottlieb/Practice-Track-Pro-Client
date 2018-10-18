@@ -21,7 +21,32 @@ const removePractice = function (practiceId) {
   })
 }
 
+const editPractice = function (practiceId, practiceData) {
+  return $.ajax({
+    url: config.apiUrl + '/practices/' + practiceId,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
+
+const addPractice = function (practiceData) {
+  return $.ajax({
+    url: config.apiUrl + '/practices',
+    method: 'POST',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    data: {
+      'practice': practiceData
+    }
+  })
+}
+
 module.exports = {
   showPractices,
-  removePractice
+  removePractice,
+  addPractice,
+  editPractice
 }

@@ -46,8 +46,16 @@
         </div>
       </div>
       <!--  Practice related elements-->
-      <section class='practices'>
-        <button class="col hidden" id="show-practices-btn" type="submit">See All Practices</button>
+      <div class='practice_header hidden'>
+      <button class="col hidden" id="show-practices-btn" type="submit">See All Practices</button>
+      <h3>Add New Practice:</h3>
+      <form id="add-practice-form" class="single-form">
+        <input required type='date' name="date" placeholder="When did you practice" />
+        <input required type='number' name="duration" placeholder="# of minutes" />
+        <input type="submit" />
+      </form>
+    </div>
+      <section class='practices hidden'>
         <div class='practice_display'></div>
       </section>
         </div>

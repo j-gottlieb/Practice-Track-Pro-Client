@@ -19,4 +19,5 @@ $(() => {
   // Practice events
   practiceEvents.addHandlers()
   $('#show-practices-btn').on('click', practiceEvents.onShowPractices)
+  $('#add-practice-form').on('submit', practiceEvents.onAddPractice)
 })

@@ -16,17 +16,17 @@ const signUpFailure = function () {
 }
 
 const signInSuccess = function (response) {
-  // console.log(store.cells)
   $('#display-message').html('').hide()
   $('#sign-in-form').trigger('reset')
   $('#display-message').css('color', 'green')
-  $('#show-practices-btn, #sign-out-form,#change-password-btn').removeClass('hidden')
+  $('#show-practices-btn, #sign-out-form, #change-password-btn, .practices, .practice_header').removeClass('hidden')
   $('#sign-in-btn,#sign-up-btn,#sign-in-form').addClass('hidden')
   store.user = response.user
   $('#display-message').text(`Welcome, ${store.user.email}`).fadeToggle().delay(1000).fadeToggle()
 }
 
 const signInFailure = function () {
+  console.log('we signed in!')
   $('#display-message').html('').hide()
   $('#display-message').text('Something went wrong, please try again').fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'red')

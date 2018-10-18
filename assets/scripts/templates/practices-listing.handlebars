@@ -2,13 +2,16 @@
 {{#each practices as |practice|}}
   {{log practice}}
 
-  <section data-id="{{practice.id}}">
-    <h1 data-id="{{practice.id}}"> <small>Duration: {{practice.duration}}</small></h1>
-      Date: {{practice.date}}
+  <section class='practice_sections' data-id="{{practice.id}}">
+    <h1 data-id="{{practice.id}}"> <small>{{practice.date}}</small></h1>
+      {{practice.duration}} minutes
       <br>
-      <button type='submit' class="col btn btn-default">Edit this Practice</button>
-      <button type='submit' class="col btn btn-default">Delete this practice</button>
-      <div class='practice_forms hidden'>
-      </div>
+      <button type='submit' class="remove_button col btn btn-default">Delete this practice</button>
+      <p>Edit this practice below:</p>
+      <form class="single-form">
+        <input name="duration" placeholder="Enter Duration" />
+        <input name="date" placeholder="Enter Date" />
+        <input type="submit" />
+      </form>
   </section>
 {{/each}}

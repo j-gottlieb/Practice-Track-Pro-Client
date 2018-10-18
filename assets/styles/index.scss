@@ -21,3 +21,16 @@ body {
   height: 300px;
   overflow: scroll;
 }
+
+.practice_sections {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.remove_button {
+    border: 1px solid black;
+    font-size: 12px;
+    height: 40px;
+    width: 200px;
+    color: red;
+    }

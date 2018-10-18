@@ -1,12 +1,10 @@
 
 {{#each practices as |practice|}}
   {{log practice}}
-  <!-- {{> partial}}
-  Don't uncomment yet -->
 
   <div>
-    <h1 data-id="{{practice.id}}"> <small>Duration: practice.duration</small></h1>
-      {{practice.date}}
+    <h1 data-id="{{practice.id}}"> <small>Duration: {{practice.duration}}</small></h1>
+      Date: {{practice.date}}
   </div>
 
 {{/each}}

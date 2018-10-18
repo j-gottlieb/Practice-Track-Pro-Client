@@ -15,3 +15,9 @@ body {
 .container {
   height: 100%;
 }
+
+.practices {
+  border: 2px black solid;
+  height: 500px;
+  overflow: scroll;
+}

@@ -20,7 +20,7 @@ const signInSuccess = function (response) {
   $('#display-message').html('').hide()
   $('#sign-in-form').trigger('reset')
   $('#display-message').css('color', 'green')
-  $('#get-stats, #sign-out-form,.game-buttons,#change-password-btn,#new-game').removeClass('hidden')
+  $('#show-practices-btn, #sign-out-form,#change-password-btn').removeClass('hidden')
   $('#sign-in-btn,#sign-up-btn,#sign-in-form').addClass('hidden')
   store.user = response.user
   $('#display-message').text(`Welcome, ${store.user.email}`).fadeToggle().delay(1000).fadeToggle()

@@ -11,6 +11,17 @@ const showPractices = function () {
   })
 }
 
+const removePractice = function (practiceId) {
+  return $.ajax({
+    url: config.apiUrl + '/practices/' + practiceId,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
+
 module.exports = {
-  showPractices
+  showPractices,
+  removePractice
 }

@@ -4,9 +4,14 @@ const showPracticesTemplate = require('../templates/practices-listing.handlebars
 const showPracticesSuccess = function (response) {
   console.log(response)
   const showPracticesHtml = showPracticesTemplate({ practices: response.practices })
-  $('.practices').html(showPracticesHtml)
+  $('.practice_display').html(showPracticesHtml)
+}
+
+const removePracticeSuccess = () => {
+  $(event.target.getAttribute('data-id')).empty()
 }
 
 module.exports = {
-  showPracticesSuccess
+  showPracticesSuccess,
+  removePracticeSuccess
 }

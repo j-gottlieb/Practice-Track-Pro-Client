@@ -17,5 +17,6 @@ $(() => {
   $('#sign-in-btn').on('click', authEvents.onShowSignIn)
   $('#change-password-btn').on('click', authEvents.onShowChangePassword)
   // Practice events
+  practiceEvents.addHandlers()
   $('#show-practices-btn').on('click', practiceEvents.onShowPractices)
 })

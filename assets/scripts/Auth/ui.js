@@ -50,13 +50,11 @@ const changePasswordFailure = function () {
 
 const signOutSuccess = function () {
   $('#display-message').html('').hide()
-  $('#get-stats').text('Get Game Stats')
   $('#sign-up-form, #sign-in-form, #change-password-form').trigger('reset')
-  $('#display-message').removeClass('hidden')
   $('#display-message').text(`You have successfully signed out`).fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'green')
-  $('#hide-stats, #get-stats, #sign-out-form, #stats-display, .result, .game-board, #change-password-btn, #change-password-form, #new-game, .game-buttons').addClass('hidden')
-  $('#sign-in-btn, #sign-up-btn, .pic-container').removeClass('hidden')
+  $('#sign-out-form, #change-password-btn, #change-password-form').addClass('hidden')
+  $('#sign-in-btn, #sign-up-btn, #display-message, ').removeClass('hidden')
 }
 
 const signOutFailure = function () {

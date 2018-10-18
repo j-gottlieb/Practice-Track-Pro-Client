@@ -1,4 +1,6 @@
 const store = require('../store.js')
+const goalEvents = require('../Goals/events.js')
+const practiceEvents = require('../Practices/events.js')
 
 const signUpSuccess = function (response) {
   $('#display-message').html('').hide()
@@ -16,12 +18,14 @@ const signUpFailure = function () {
 }
 
 const signInSuccess = function (response) {
+  store.user = response.user
+  practiceEvents.onShowPractices()
+  goalEvents.onShowGoals()
   $('#display-message').html('').hide()
   $('#sign-in-form').trigger('reset')
   $('#display-message').css('color', 'green')
-  $('#show-practices-btn, #sign-out-form, #change-password-btn, .practices, .practice_header').removeClass('hidden')
+  $('#show-practices-btn, #sign-out-form, #change-password-btn, .practices, .practice_header, .goals').removeClass('hidden')
   $('#sign-in-btn,#sign-up-btn,#sign-in-form').addClass('hidden')
-  store.user = response.user
   $('#display-message').text(`Welcome, ${store.user.email}`).fadeToggle().delay(1000).fadeToggle()
 }
 

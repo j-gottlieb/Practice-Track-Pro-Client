@@ -120,6 +120,7 @@ const getProgresses = () => {
   showProgress(dailyProgress, '.goal_daily')
   showProgress(weeklyProgress, '.goal_weekly')
   showProgress(monthlyProgress, '.goal_monthly')
+  $('.display_progress_btn').addClass('hidden')
 }
 
 module.exports = {

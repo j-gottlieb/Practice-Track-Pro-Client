@@ -95,7 +95,7 @@ const showProgress = function (progress, location) {
       alignToBottom: false
     },
     from: {color: '#FFEA82'},
-    to: {color: '#ED6A5A'},
+    to: {color: '#01a32a'},
     // Set default step function for all animate calls
     step: (state, bar) => {
       bar.path.setAttribute('stroke', state.color)
@@ -114,6 +114,9 @@ const showProgress = function (progress, location) {
 }
 
 const getProgresses = () => {
+  if (store.goals[0] === undefined) {
+    $('#progress_message').html("Set goals above to view your progress!")
+  } else {
   $('.goal_daily, .goal_weekly, .goal_monthly').html('')
   const dailyProgress = (todayDuration() / store.goals[0].daily)
   const weeklyProgress = (weekDuration() / store.goals[0].weekly)
@@ -123,6 +126,7 @@ const getProgresses = () => {
   showProgress(monthlyProgress, '.goal_monthly')
   $('.display_progress_btn').addClass('hidden')
   $('.progress_dash, .refresh_progress_btn').removeClass('hidden')
+}
 }
 
 module.exports = {

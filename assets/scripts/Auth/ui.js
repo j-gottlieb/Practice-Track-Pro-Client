@@ -24,7 +24,7 @@ const signInSuccess = function (response) {
   $('#sign-in-form').trigger('reset')
   $('#display-message').css('color', 'green')
   $('#show-practices-btn, #sign-out-form, #change-password-btn, .practices, .practice_header, .goals, .display_progress_btn, #view-goals-btn, .practice_index').removeClass('hidden')
-  $('#sign-in-btn,#sign-up-btn,#sign-in-form,.cork_div ').addClass('hidden')
+  $('#sign-in-btn,#sign-up-btn,#sign-in-form,.cork_div').addClass('hidden')
   $('#display-message').text(`Welcome, ${store.user.email}`).fadeToggle().delay(1000).fadeToggle()
   goalEvents.onShowGoals()
 }
@@ -63,7 +63,7 @@ const signOutSuccess = function () {
   $('#display-message').text(`You have successfully signed out`).fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'green')
   $('#sign-out-form, #change-password-btn, #change-password-form, #show-practices-btn, .practices, .practice_header, .goals, .progress_dash, #edit-goal-form, #add-goal-form').addClass('hidden')
-  $('#sign-in-btn, #sign-up-btn, #display-message').removeClass('hidden')
+  $('#sign-in-btn, #sign-up-btn, #display-message, .cork_div').removeClass('hidden')
 }
 
 const signOutFailure = function () {

@@ -34,6 +34,7 @@
       <div class="buttons row align-items-center">
       </div>
       <div class="row align-items-center forms">
+        <div class="message-block">
         <form id="sign-up-form" class="hidden col single-form">
               <p>Enter User Information</p>
               <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
@@ -53,7 +54,6 @@
               <input type="submit" />
             </form>
           </div>
-          <div class="message-block">
           <div id="display-message" class="display-message">
         </div>
       </div>
@@ -76,7 +76,7 @@
       <!--  Goal related elements -->
       <div class='goals hidden'>
         <div class="dropdown">
-        <button class="col hidden" id="view-goals-btn" type="submit">Add/Edit Goals</button>
+        <button class="col hover_practice hidden" id="view-goals-btn" type="submit">Add/Edit Goals</button>
         <form id="add-goal-form" class="dropdown-content single-form hidden">Create New Goals!
           <input required type='number' name="daily" placeholder="Daily Goal" />
           <input required type='number' name="weekly" placeholder="Weekly Goal" />
@@ -93,6 +93,7 @@
         <div class='goal_display'>
         <button type='submit' class="refresh_progress_btn hidden col">Refresh</button>
         <button type='submit' class="display_progress_btn col">Show Progress</button>
+        <p id="progress_message"></p>
         </div>
         <div class='progress_dash hidden'>
           <div class="progress_labels">

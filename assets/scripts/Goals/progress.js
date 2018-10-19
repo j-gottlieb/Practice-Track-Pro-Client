@@ -114,6 +114,7 @@ const showProgress = function (progress, location) {
 }
 
 const getProgresses = () => {
+  $('.progress_dash').removeClass('hidden')
   const dailyProgress = (todayDuration() / store.goals[0].daily)
   const weeklyProgress = (weekDuration() / store.goals[0].weekly)
   const monthlyProgress = (monthDuration() / store.goals[0].monthly)

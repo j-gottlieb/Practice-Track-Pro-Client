@@ -7,11 +7,9 @@ const onRemovePractice = function (event) {
   event.preventDefault()
   const practiceId = $(event.target).closest('section').data('id')
   // console.log(practiceId)
-  if (confirm('Are you sure you want to delete this practice?')) {
-    api.removePractice(practiceId)
-      .then(() => onShowPractices(event))
-      .catch(ui.removePracticeFailure)
-  }
+  api.removePractice(practiceId)
+    .then(() => onShowPractices(event))
+    .catch(ui.removePracticeFailure)
 }
 
 const onEditPractice = function (event) {
@@ -20,7 +18,7 @@ const onEditPractice = function (event) {
   const practiceData = getFormFields(event.target)
   // console.log(practiceId)
   api.editPractice(practiceId, practiceData)
-    .then(ui.editPracticeSuccess)
+    .then(() => onShowPractices(event))
     .catch()
   $('.edit_form').trigger('reset')
 }

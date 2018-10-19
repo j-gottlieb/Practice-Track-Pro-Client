@@ -1,5 +1,5 @@
 const store = require('../store.js')
-const showGoalsTemplate = require('../templates/goals-listing.handlebars')
+// const showGoalsTemplate = require('../templates/goals-listing.handlebars')
 
 const showGoalsSuccess = function (response) {
   store.goals = response.goals

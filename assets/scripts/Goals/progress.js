@@ -79,10 +79,10 @@ const monthDuration = () => {
   return result
 }
 
-const showProgress = function (progress) {
+const showProgress = function (progress, location) {
   // this function takes in practice duration, compares it to the goal and
   // animates a progress bar in the browser
-  const bar = new ProgressBar.SemiCircle('.goal_display', {
+  const bar = new ProgressBar.SemiCircle(location, {
     strokeWidth: 6,
     color: '#FFEA82',
     trailColor: '#eee',
@@ -117,9 +117,9 @@ const getProgresses = () => {
   const dailyProgress = (todayDuration() / store.goals[0].daily)
   const weeklyProgress = (weekDuration() / store.goals[0].weekly)
   const monthlyProgress = (monthDuration() / store.goals[0].monthly)
-  showProgress(dailyProgress)
-  showProgress(weeklyProgress)
-  showProgress(monthlyProgress)
+  showProgress(dailyProgress, '.goal_daily')
+  showProgress(weeklyProgress, '.goal_weekly')
+  showProgress(monthlyProgress, '.goal_monthly')
 }
 
 module.exports = {

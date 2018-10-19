@@ -39,3 +39,18 @@ body {
   width: 300px;
   margin: 20px;
 }
+
+.progress_dash {
+  border: 2px solid black;
+  margin: 20px;
+  padding: 40px;
+  width: 700px;
+  text-align: center;
+}
+
+.goal_daily,
+.goal_weekly,
+.goal_monthly {
+  width: 200px;
+  display: inline-block;
+}

@@ -3,6 +3,7 @@ const store = require('../store.js')
 
 const showGoalsSuccess = function (response) {
   store.goals = response.goals
+  // console.log(store.goals)
   // progress.showProgress()
   // const showGoalsHtml = showGoalsTemplate({ goals: response.goals })
   // if (response.goals.length > 0) {
@@ -12,14 +13,14 @@ const showGoalsSuccess = function (response) {
   // }
 }
 
-const removeGoalSuccess = (callback) => {
+const removeGoalSuccess = () => {
   $(event.target.getAttribute('data-id')).empty()
-  callback()
 }
 
 const editGoalSuccess = (response) => {
-  store.goals = response.goals
-  $('.edit_form').trigger('reset')
+  store.goals.pop()
+  store.goals.push(response.goal)
+  $('.edit-goal-form').trigger('reset')
 }
 
 const addGoalSuccess = (response) => {

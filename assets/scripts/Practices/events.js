@@ -1,7 +1,7 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
-// const store = require('../store.js')
+const store = require('../store.js')
 
 const onRemovePractice = function (event) {
   event.preventDefault()
@@ -14,11 +14,14 @@ const onRemovePractice = function (event) {
 
 const onEditPractice = function (event) {
   event.preventDefault()
-  $('.edit_form').trigger('reset')
-  const practiceId = $(event.target).closest('section').data('id')
-  const practiceData = getFormFields(event.target)
-  // console.log(practiceId)
-  api.editPractice(practiceId, practiceData)
+  if (getFormFields(event.target).date) {
+    store.practices[0].date = getFormFields(event.target).date
+  }
+  if (getFormFields(event.target).duration) {
+    store.practices[0].duration = getFormFields(event.target).duration
+  }
+  const practiceData = store.practices[0]
+  api.editPractice(practiceData)
     .then(() => onShowPractices(event))
     .catch()
   $('.edit_form').trigger('reset')

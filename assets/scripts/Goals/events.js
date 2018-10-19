@@ -16,13 +16,26 @@ const onRemoveGoal = function (event) {
 }
 
 const onEditGoal = function (event) {
+  // console.log(store.goals[0].id)
   event.preventDefault()
-  const goalId = $(event.target).closest('section').data('id')
-  const goalData = getFormFields(event.target)
-  // console.log(goalId)
-  api.editGoal(goalId, goalData)
-    .then(ui.editGoalSuccess(onShowGoals(event)))
+  // console.log(getFormFields(event.target).daily)
+  if (getFormFields(event.target).daily) {
+    store.goals[0].daily = getFormFields(event.target).daily
+  }
+  if (getFormFields(event.target).weekly) {
+    store.goals[0].weekly = getFormFields(event.target).weekly
+  }
+  if (getFormFields(event.target).monthly) {
+    store.goals[0].monthly = getFormFields(event.target).monthly
+  }
+  // console.log(getFormFields(event.target))
+  const goalData = store.goals[0]
+  // console.log(goalData.id)
+  // console.log(getFormFields(event.target))
+  api.editGoal(goalData)
+    .then(ui.editGoalSuccess)
     .catch()
+  $('#edit-goal-form').trigger('reset')
 }
 
 const onViewGoals = function () {
@@ -46,7 +59,7 @@ const onAddGoal = function (event) {
   event.preventDefault()
   const goalData = getFormFields(event.target)
   api.addGoal(goalData)
-    .then(ui.addGoalSuccess(onShowGoals(event)))
+    .then(ui.addGoalSuccess)
     .catch()
 }
 

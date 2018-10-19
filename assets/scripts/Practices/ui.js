@@ -1,5 +1,6 @@
 const store = require('../store.js')
 const showPracticesTemplate = require('../templates/practices-listing.handlebars')
+const progress = require('../Goals/progress.js')
 
 const showPracticesSuccess = function (response) {
   store.practices = response.practices
@@ -21,6 +22,7 @@ const editPracticeSuccess = () => {
 
 const addPracticeSuccess = () => {
   $('#add-practice-form').trigger('reset')
+  progress.getProgresses()
 }
 module.exports = {
   showPracticesSuccess,

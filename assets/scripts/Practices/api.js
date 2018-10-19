@@ -21,15 +21,18 @@ const removePractice = function (practiceId) {
   })
 }
 
-const editPractice = function (practiceId, practiceData) {
+const editPractice = function (practiceData) {
   return $.ajax({
-    url: config.apiUrl + '/practices/' + practiceId,
+    url: config.apiUrl + '/practices/' + practiceData.id,
     method: 'PATCH',
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
     data: {
-      'practice': practiceData
+      'practice': {
+        'date': practiceData.date,
+        'duration': practiceData.duration
+      }
     }
   })
 }

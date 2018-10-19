@@ -21,15 +21,19 @@ const removeGoal = function (goalId) {
   })
 }
 
-const editGoal = function (goalId, goalData) {
+const editGoal = function (goalData) {
   return $.ajax({
-    url: config.apiUrl + '/goals/' + goalId,
+    url: config.apiUrl + '/goals/' + goalData.id,
     method: 'PATCH',
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
     data: {
-      'goal': goalData
+      'goal': {
+        'daily': goalData.daily,
+        'weekly': goalData.weekly,
+        'monthly': goalData.monthly
+      }
     }
   })
 }

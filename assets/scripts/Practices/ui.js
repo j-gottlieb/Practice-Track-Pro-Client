@@ -17,7 +17,6 @@ const removePracticeSuccess = () => {
 }
 
 const editPracticeSuccess = () => {
-  $('.edit_form').trigger('reset')
 }
 
 const addPracticeSuccess = () => {

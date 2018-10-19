@@ -1,5 +1,5 @@
 const store = require('../store.js')
-// const goalEvents = require('../Goals/events.js')
+const goalEvents = require('../Goals/events.js')
 const practiceEvents = require('../Practices/events.js')
 
 const signUpSuccess = function (response) {
@@ -20,13 +20,13 @@ const signUpFailure = function () {
 const signInSuccess = function (response) {
   store.user = response.user
   practiceEvents.onShowPractices()
-  // goalEvents.onShowGoals()
   $('#display-message').html('').hide()
   $('#sign-in-form').trigger('reset')
   $('#display-message').css('color', 'green')
-  $('#show-practices-btn, #sign-out-form, #change-password-btn, .practices, .practice_header, .goals').removeClass('hidden')
+  $('#show-practices-btn, #sign-out-form, #change-password-btn, .practices, .practice_header, .goals, .display_progress_btn, #view-goals-btn').removeClass('hidden')
   $('#sign-in-btn,#sign-up-btn,#sign-in-form').addClass('hidden')
   $('#display-message').text(`Welcome, ${store.user.email}`).fadeToggle().delay(1000).fadeToggle()
+  goalEvents.onShowGoals()
 }
 
 const signInFailure = function () {
@@ -53,13 +53,16 @@ const changePasswordFailure = function () {
 }
 
 const signOutSuccess = function () {
+  store.user = null
+  store.goals = null
+  store.practices = null
   $('#display-message').html('').hide()
-  $('.practice_display').html('')
+  $('.practice_display, .goal_daily, .goal_weekly, .goal_monthly').html('')
   $('.edit_form, #add-practices-form').trigger('reset')
   $('#sign-up-form, #sign-in-form, #change-password-form').trigger('reset')
   $('#display-message').text(`You have successfully signed out`).fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'green')
-  $('#sign-out-form, #change-password-btn, #change-password-form, #show-practices-btn, .practices, .practice_header').addClass('hidden')
+  $('#sign-out-form, #change-password-btn, #change-password-form, #show-practices-btn, .practices, .practice_header, .goals, .progress_dash, #edit-goal-form, #add-goal-form').addClass('hidden')
   $('#sign-in-btn, #sign-up-btn, #display-message').removeClass('hidden')
 }
 

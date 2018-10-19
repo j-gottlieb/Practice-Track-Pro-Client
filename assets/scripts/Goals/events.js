@@ -1,7 +1,8 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
-// const store = require('../store.js')
+const progress = require('./progress.js')
+const store = require('../store.js')
 
 const onRemoveGoal = function (event) {
   event.preventDefault()
@@ -24,12 +25,13 @@ const onEditGoal = function (event) {
     .catch()
 }
 
-const addHandlers = () => {
-  // this allows each book to be clickable after all the books have loaded.
-  // You can't add an event for dom elements that don't exist until after the
-  //  page loads.
-  // $('.goal_display').on('click', '.remove_button', onRemoveGoal)
-  // $('.goal_display').on('submit', '.edit_form', onEditGoal)
+const onViewGoals = function () {
+  // console.log(store.goals)
+  if (store.goals[0] === undefined) {
+    $('#add-goal-form').removeClass('hidden')
+  } else if (store.goals[0].daily !== null) {
+    $('#edit-goal-form').removeClass('hidden')
+  }
 }
 
 const onShowGoals = function () {
@@ -46,6 +48,16 @@ const onAddGoal = function (event) {
   api.addGoal(goalData)
     .then(ui.addGoalSuccess(onShowGoals(event)))
     .catch()
+}
+
+const addHandlers = () => {
+  // this allows each book to be clickable after all the books have loaded.
+  // You can't add an event for dom elements that don't exist until after the
+  //  page loads.
+  $('#edit-goal-form').on('submit', onEditGoal)
+  $('#add-goal-form').on('submit', onAddGoal)
+  $('#view-goals-btn').on('click', onViewGoals)
+  $('.display_progress_btn').on('click', progress.getProgresses)
 }
 
 module.exports = {

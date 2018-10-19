@@ -21,6 +21,7 @@ const onEditPractice = function (event) {
   api.editPractice(practiceId, practiceData)
     .then(() => onShowPractices(event))
     .catch()
+  $('.edit_form').trigger('reset')
 }
 
 const addHandlers = () => {

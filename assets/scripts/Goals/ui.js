@@ -1,16 +1,15 @@
 const store = require('../store.js')
-const showGoalsTemplate = require('../templates/goals-listing.handlebars')
-const progress = require('./progress.js')
+// const showGoalsTemplate = require('../templates/goals-listing.handlebars')
 
 const showGoalsSuccess = function (response) {
   store.goals = response.goals
-  progress.showProgress()
-  const showGoalsHtml = showGoalsTemplate({ goals: response.goals })
-  if (response.goals.length > 0) {
-    $('.goal_display').html(showGoalsHtml)
-  } else {
-    $('.goal_display').html("You haven't your goals yet, ya bastard!")
-  }
+  // progress.showProgress()
+  // const showGoalsHtml = showGoalsTemplate({ goals: response.goals })
+  // if (response.goals.length > 0) {
+  //   $('.goal_display').html(showGoalsHtml)
+  // } else {
+  //   $('.goal_display').html("You haven't your goals yet, ya bastard!")
+  // }
 }
 
 const removeGoalSuccess = (callback) => {
@@ -18,11 +17,13 @@ const removeGoalSuccess = (callback) => {
   callback()
 }
 
-const editGoalSuccess = () => {
+const editGoalSuccess = (response) => {
+  store.goals = response.goals
   $('.edit_form').trigger('reset')
 }
 
-const addGoalSuccess = () => {
+const addGoalSuccess = (response) => {
+  store.goals = response.goals
   $('#add-goal-form').trigger('reset')
 }
 

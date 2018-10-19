@@ -1,10 +1,9 @@
 const store = require('../store.js')
 const showGoalsTemplate = require('../templates/goals-listing.handlebars')
-const progress = require('./progress.js')
 
 const showGoalsSuccess = function (response) {
   store.goals = response.goals
-  progress.showProgress()
+  // progress.showProgress()
   const showGoalsHtml = showGoalsTemplate({ goals: response.goals })
   if (response.goals.length > 0) {
     $('.goal_display').html(showGoalsHtml)

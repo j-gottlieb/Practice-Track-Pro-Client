@@ -1,6 +1,7 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const progress = require('./progress.js')
 // const store = require('../store.js')
 
 const onRemoveGoal = function (event) {
@@ -28,8 +29,8 @@ const addHandlers = () => {
   // this allows each book to be clickable after all the books have loaded.
   // You can't add an event for dom elements that don't exist until after the
   //  page loads.
-  $('.goal_display').on('click', '.remove_button', onRemoveGoal)
-  $('.goal_display').on('submit', '.edit_form', onEditGoal)
+  // $('.goal_display').on('click', '.remove_button', onRemoveGoal)
+  $('.display_progress_btn').on('click', progress.showProgress)
 }
 
 const onShowGoals = function () {

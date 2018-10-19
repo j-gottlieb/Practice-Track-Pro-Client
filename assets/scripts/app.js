@@ -20,7 +20,7 @@ $(() => {
   // Goal Events
   goalEvents.addHandlers()
   // Practice events
-  practiceEvents.addHandlers()
+  // practiceEvents.addHandlers()
   // $('#show-practices-btn').on('click', practiceEvents.onShowPractices)
-  // $('#add-practice-form').on('submit', practiceEvents.onAddPractice)
+  $('#add-practice-form').on('submit', practiceEvents.onAddPractice)
 })

@@ -44,8 +44,9 @@ const onAddPractice = function (event) {
   event.preventDefault()
   const practiceData = getFormFields(event.target)
   api.addPractice(practiceData)
-    .then(ui.addPracticeSuccess(onShowPractices(event)))
+    .then(() => onShowPractices(event))
     .catch()
+  $('#add-practice-form').trigger('reset')
 }
 
 module.exports = {

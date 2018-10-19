@@ -114,6 +114,7 @@ const showProgress = function (progress, location) {
 }
 
 const getProgresses = () => {
+  $('.goal_daily, .goal_weekly, .goal_monthly').html('')
   const dailyProgress = (todayDuration() / store.goals[0].daily)
   const weeklyProgress = (weekDuration() / store.goals[0].weekly)
   const monthlyProgress = (monthDuration() / store.goals[0].monthly)
@@ -121,7 +122,7 @@ const getProgresses = () => {
   showProgress(weeklyProgress, '.goal_weekly')
   showProgress(monthlyProgress, '.goal_monthly')
   $('.display_progress_btn').addClass('hidden')
-  $('.progress_dash').removeClass('hidden')
+  $('.progress_dash, .refresh_progress_btn').removeClass('hidden')
 }
 
 module.exports = {

@@ -3,7 +3,7 @@
     <head>
       <title>Example</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
@@ -12,17 +12,26 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Practice Track Pro</h1>
-      <p>PTP lets you keep track of every day you practiced and for how long.
-        Someday it will also let you set goals and track your progress. A man
-        can dream...</p>
       <div class="container">
+        <header>
+        <h1>Practice Track Pro</h1>
+        <div class="header_buttons">
+        <button id="sign-up-btn" type="submit">Sign Up</button>
+        <button id="sign-in-btn"type="submit">Sign In</button>
+        <button class="hidden" id="change-password-btn"type="submit" >Change Password</button>
+        <button class="hidden" id="sign-out-form" type="submit">Sign Out</button>
+      </div>
+      </header>
+        <div class="musical_notes">
+          <img alt="musical notes" src="./assets/images/musical-notes.jpg">
+          <div class="description">
+          <p>PTP stores your practice sessions and goals so you can track
+            your progress and stay on course!
+          </p>
+        </div>
+        </div>
         <!--  Auth related elements-->
       <div class="buttons row align-items-center">
-        <button class="col" id="sign-up-btn" type="submit">Sign Up</button>
-        <button class="col" id="sign-in-btn"type="submit">Sign In</button>
-        <button class="col hidden" id="change-password-btn"type="submit" >Change Password</button>
-        <button class="col hidden" id="sign-out-form" type="submit">Sign Out</button>
       </div>
       <div class="row align-items-center forms">
         <form id="sign-up-form" class="hidden col single-form">
@@ -48,16 +57,33 @@
           <div id="display-message" class="display-message">
         </div>
       </div>
+      <div class="cork_div">
+      <img alt="cork board" src="./assets/images/practice.jpg">
+    </div>
+      <!--  Add new practice instances -->
+      <div class='practice_header hidden'>
+        <h2>Did you practice today???</h2>
+      <!-- <button class="col hidden" id="show-practices-btn" type="submit">See All Practices</button> -->
+      <div class="dropdown">
+        <h3 class="hover_practice">Add New Practice</h3>
+      <form id="add-practice-form" class="dropdown-content single-form">
+        <input required type='date' name="date" placeholder="When did you practice" />
+        <input required type='number' name="duration" placeholder="# of minutes" />
+        <input type="submit" />
+      </form>
+    </div>
+    </div>
       <!--  Goal related elements -->
       <div class='goals hidden'>
+        <div class="dropdown">
         <button class="col hidden" id="view-goals-btn" type="submit">Add/Edit Goals</button>
-        <button type='submit' class="display_progress_btn col">Show Progress</button>
-        <form id="add-goal-form" class="single-form hidden">Create New Goals!
+        <form id="add-goal-form" class="dropdown-content single-form hidden">Create New Goals!
           <input required type='number' name="daily" placeholder="Daily Goal" />
           <input required type='number' name="weekly" placeholder="Weekly Goal" />
           <input required type='number' name="monthly" placeholder="Monthly Goal" />
           <input type="submit" />
         </form>
+      </div>
         <form id="edit-goal-form" class="single-form hidden">Edit Your Goals
           <input type='number' name="daily" placeholder="Daily Goal" />
           <input type='number' name="weekly" placeholder="Weekly Goal" />
@@ -65,26 +91,33 @@
           <input type="submit" />
         </form>
         <div class='goal_display'>
+        <button type='submit' class="refresh_progress_btn hidden col">Refresh</button>
+        <button type='submit' class="display_progress_btn col">Show Progress</button>
         </div>
         <div class='progress_dash hidden'>
-          <div class='goal_daily'><h4>Daily:</h4></div>
-          <div class='goal_weekly'><h4>Weekly:</h4></div>
-          <div class="goal_monthly"><h4>Monthly:</h4></div>
+          <div class="progress_labels">
+            <h4>Daily:</h4>
+            <h4>Weekly:</h4>
+            <h4>Monthly:</h4>
+          </div>
+          <div class="progress_labels">
+          <div class='goal_daily'></div>
+          <div class='goal_weekly'></div>
+          <div class="goal_monthly"></div>
+        </div>
         </div>
       </div>
       <!--  Practice related elements-->
-      <div class='practice_header hidden'>
-      <button class="col hidden" id="show-practices-btn" type="submit">See All Practices</button>
-      <h3>Add New Practice:</h3>
-      <form id="add-practice-form" class="single-form">
-        <input required type='date' name="date" placeholder="When did you practice" />
-        <input required type='number' name="duration" placeholder="# of minutes" />
-        <input type="submit" />
-      </form>
-    </div>
+      <div class="practice_index hidden">
+      <h3>View/Edit Practices Below:</h3>
       <section class='practices hidden'>
         <div class='practice_display'></div>
       </section>
         </div>
+        <footer>
+      <a class="linkedin" href="https://www.linkedin.com/in/jesse-gottlieb">LinkedIn</a>
+      <p class="created">Created by Jesse Gottlieb</p>
+    </footer>
+      </div>
     </body>
 </html>

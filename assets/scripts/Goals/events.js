@@ -70,7 +70,7 @@ const addHandlers = () => {
   $('#edit-goal-form').on('submit', onEditGoal)
   $('#add-goal-form').on('submit', onAddGoal)
   $('#view-goals-btn').on('click', onViewGoals)
-  $('.display_progress_btn').on('click', progress.getProgresses)
+  $('.display_progress_btn, .refresh_progress_btn').on('click', progress.getProgresses)
 }
 
 module.exports = {

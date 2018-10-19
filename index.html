@@ -47,8 +47,21 @@
       </div>
       <!--  Goal related elements -->
       <div class='goals hidden'>
-        <h2>Goals</h2>
-        <button type='submit' class="display_progress_btn col btn btn-default">Show Progress</button>
+        <h2>Add Goals (in minutes)</h2>
+        <button class="col hidden" id="view-goals-btn" type="submit">View Goals</button>
+        <button type='submit' class="display_progress_btn col">Show Progress</button>
+        <form id="add-goal-form" class="single-form hidden">Create New Goals!
+          <input required type='number' name="daily" placeholder="Daily Goal" />
+          <input required type='number' name="weekly" placeholder="Weekly Goal" />
+          <input required type='number' name="monthly" placeholder="Monthly Goal" />
+          <input type="submit" />
+        </form>
+        <form id="edit-goal-form" class="single-form hidden">Edit Your Goals
+          <input type='number' name="daily" placeholder="Daily Goal" />
+          <input type='number' name="weekly" placeholder="Weekly Goal" />
+          <input type='number' name="monthly" placeholder="Monthly Goal" />
+          <input type="submit" />
+        </form>
         <div class='goal_display'>
         </div>
         <div class='progress_dash hidden'>

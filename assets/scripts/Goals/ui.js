@@ -4,12 +4,12 @@ const showGoalsTemplate = require('../templates/goals-listing.handlebars')
 const showGoalsSuccess = function (response) {
   store.goals = response.goals
   // progress.showProgress()
-  const showGoalsHtml = showGoalsTemplate({ goals: response.goals })
-  if (response.goals.length > 0) {
-    $('.goal_display').html(showGoalsHtml)
-  } else {
-    $('.goal_display').html("You haven't your goals yet, ya bastard!")
-  }
+  // const showGoalsHtml = showGoalsTemplate({ goals: response.goals })
+  // if (response.goals.length > 0) {
+  //   $('.goal_display').html(showGoalsHtml)
+  // } else {
+  //   $('.goal_display').html("You haven't your goals yet, ya bastard!")
+  // }
 }
 
 const removeGoalSuccess = (callback) => {

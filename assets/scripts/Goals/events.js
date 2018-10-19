@@ -30,7 +30,7 @@ const addHandlers = () => {
   // You can't add an event for dom elements that don't exist until after the
   //  page loads.
   // $('.goal_display').on('click', '.remove_button', onRemoveGoal)
-  $('.display_progress_btn').on('click', progress.showProgress)
+  $('.display_progress_btn').on('click', progress.getProgresses)
 }
 
 const onShowGoals = function () {

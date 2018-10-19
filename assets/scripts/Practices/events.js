@@ -22,6 +22,7 @@ const onEditPractice = function (event) {
   api.editPractice(practiceId, practiceData)
     .then(ui.editPracticeSuccess)
     .catch()
+  $('.edit_form').trigger('reset')
 }
 
 const addHandlers = () => {

@@ -17,11 +17,13 @@ const removeGoalSuccess = (callback) => {
   callback()
 }
 
-const editGoalSuccess = () => {
+const editGoalSuccess = (response) => {
+  store.goals = response.goals
   $('.edit_form').trigger('reset')
 }
 
-const addGoalSuccess = () => {
+const addGoalSuccess = (response) => {
+  store.goals = response.goals
   $('#add-goal-form').trigger('reset')
 }
 

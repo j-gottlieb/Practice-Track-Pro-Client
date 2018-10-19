@@ -18,7 +18,6 @@ const removePracticeSuccess = (callback) => {
 }
 
 const editPracticeSuccess = () => {
-  $('.edit_form').trigger('reset')
 }
 
 const addPracticeSuccess = () => {

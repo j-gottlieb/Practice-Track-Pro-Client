@@ -64,17 +64,17 @@
       <div class='practice_header hidden'>
         <h2>Did you practice today???</h2>
       <!-- <button class="col hidden" id="show-practices-btn" type="submit">See All Practices</button> -->
-      <div class="dropdown">
-        <h3 class="hover_practice">Add New Practice</h3>
+      <div class="row justify-content-around">
+      <div class="dropdown col-3">
+        <button class="hover_practice">Add New Practice</button>
       <form id="add-practice-form" class="dropdown-content single-form">
         <input required type='date' name="date" placeholder="When did you practice" />
         <input required type='number' name="duration" placeholder="# of minutes" />
         <input type="submit" />
       </form>
     </div>
-    </div>
       <!--  Goal related elements -->
-      <div class='goals hidden'>
+      <div class='goals col-3'>
         <div class="dropdown">
         <button class="col hover_practice hidden" id="view-goals-btn" type="submit">Add/Edit Goals</button>
         <form id="add-goal-form" class="dropdown-content single-form hidden">Create New Goals!
@@ -84,15 +84,18 @@
           <input type="submit" />
         </form>
       </div>
-        <form id="edit-goal-form" class="single-form hidden">Edit Your Goals
+    </div>
+    <button type='submit' class="refresh_progress_btn hidden hover_practice col">Refresh</button>
+    <button type='submit' class="display_progress_btn hover_practice col">Show Progress</button>
+    </div>
+    </div>
+        <!-- <form id="edit-goal-form" class="single-form hidden">Edit Your Goals
           <input type='number' name="daily" placeholder="Daily Goal" />
           <input type='number' name="weekly" placeholder="Weekly Goal" />
           <input type='number' name="monthly" placeholder="Monthly Goal" />
           <input type="submit" />
-        </form>
+        </form> -->
         <div class='goal_display'>
-        <button type='submit' class="refresh_progress_btn hidden col">Refresh</button>
-        <button type='submit' class="display_progress_btn col">Show Progress</button>
         <p id="progress_message"></p>
         </div>
         <div class='progress_dash hidden'>

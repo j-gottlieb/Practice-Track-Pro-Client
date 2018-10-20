@@ -62,7 +62,7 @@ const signOutSuccess = function () {
   $('#sign-up-form, #sign-in-form, #change-password-form').trigger('reset')
   $('#display-message').text(`You have successfully signed out`).fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'green')
-  $('#sign-out-form, #change-password-btn, #change-password-form, #show-practices-btn, .practices, .practice_header, .goals, .progress_dash, #edit-goal-form, #add-goal-form').addClass('hidden')
+  $('#sign-out-form, .refresh_progress_btn, #change-password-btn, #change-password-form, #show-practices-btn, .practices, .practice_header, .goals, .progress_dash, #edit-goal-form, #add-goal-form').addClass('hidden')
   $('#sign-in-btn, #sign-up-btn, #display-message, .cork_div').removeClass('hidden')
 }
 

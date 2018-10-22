@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>PTP</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
       <!-- Do not add `link` tags-->
@@ -13,17 +13,90 @@
     </head>
     <body>
       <div class="container">
-        <header>
+        <header class="row justify-content-between">
+          <div class="title col-7">
         <h1>Practice Track Pro</h1>
-        <div class="header_buttons">
-        <button id="sign-up-btn" type="submit">Sign Up</button>
-        <button id="sign-in-btn"type="submit">Sign In</button>
-        <button class="hidden" id="change-password-btn"type="submit" >Change Password</button>
-        <button class="hidden" id="sign-out-form" type="submit">Sign Out</button>
       </div>
+      <div class="class-div col">
+        <div id="display-message" class="display-message">
+      </div>
+    </div>
+    <!-- <div class="auth_btns row col"> -->
+        <div class="signed_out row">
+          <div class="btn-group">
+            <button id="sign-up-btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              Sign-Up
+            </button>
+            <ul class="dropdown-menu">
+              <form id="sign-up-form">
+                 <div class="form-group"><div class="form-group">
+                   <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
+                 </div>
+                 <div class="form-group">
+                   <input required name="credentials[password]" type="password" placeholder="Enter Password" />
+                 </div>
+                  <div class="form-group">
+                   <input required name="credentials[password_confirmation]" type="password" placeholder="Confirm Password">
+                 </div>
+                   <div class="form-group">
+                   </div>
+                   <div class="form-group">
+                   <input type="submit"/>
+                 </div>
+                 </div>
+              </form>
+            </ul>
+            </div>
+            <div class="btn-group">
+            <button id="sign-in-btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              Sign-In
+            </button>
+            <ul class="dropdown-menu">
+              <form id="sign-in-form">
+                 <div class="form-group"><div class="form-group">
+                   <input required type="email" name="credentials[email]" placeholder="Enter Email" />
+                 </div>
+                 <div class="form-group">
+                   <input required name="credentials[password]" type="password" placeholder="Enter Password" />
+                 </div>
+                   <div class="form-group">
+                   <input class="dropdown-item" type="submit" />
+                 </div>
+                 </div>
+              </form>
+            </ul>
+          </div>
+          </div>
+        <div class="signed_in hidden row">
+          <div class="btn-group">
+          <button id="change-password-btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Change <br> Password
+          </button>
+          <ul class="dropdown-menu">
+            <form id="change-password-form">
+               <div class="form-group"><div class="form-group">
+                 <input required type="password" name="passwords[old]" placeholder="Enter Old Password" />
+               </div>
+               <div class="form-group">
+                 <input required type="password" name="passwords[new]" placeholder="Enter New Password" />
+               </div>
+                 <div class="form-group">
+                 <input class="dropdown-item" type="submit" />
+               </div>
+               </div>
+            </form>
+          </ul>
+          </div>
+          <div class="sign_out_btn btn-group">
+          <button id="sign-out-form" type="button" class="btn btn-default" data-toggle="dropdown">
+            Sign Out
+          </button>
+          </div>
+          </div>
+        <!-- </div> -->
       </header>
         <div class="musical_notes">
-          <img alt="musical notes" src="./assets/images/musical-notes.jpg"/>
+          <img alt="musical notes" src="./public/images/musical-notes.jpg"/>
           <div class="description">
           <p>PTP stores your practice sessions and goals so you can track
             your progress and stay on course!
@@ -31,41 +104,15 @@
         </div>
         </div>
         <!--  Auth related elements-->
-      <div class="buttons row align-items-center">
-      </div>
-      <div class="row align-items-center forms">
-        <div class="message-block">
-        <form id="sign-up-form" class="hidden col single-form">
-              <p>Enter User Information</p>
-              <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
-              <input required name="credentials[password]" type="password" placeholder="Enter Password" />
-              <input required name="credentials[password_confirmation]" type="password" placeholder="Confirm Password">
-              <input type="submit" />
-            </form>
-            <form id="sign-in-form" class="hidden single-form">
-              <p>Enter User Information</p>
-              <input required type="email" name="credentials[email]" placeholder="Enter Email" />
-              <input required name="credentials[password]" type="password" placeholder="Enter Password" />
-              <input type="submit" />
-            </form>
-            <form id="change-password-form" class="hidden single-form">
-              <input required type="password" name="passwords[old]" placeholder="Enter Old Password" />
-              <input required type="password" name="passwords[new]" placeholder="Enter New Password" />
-              <input type="submit" />
-            </form>
-          </div>
-          <div id="display-message" class="display-message">
-        </div>
-      </div>
+        <h2>Did you practice today???</h2>
       <div class="cork_div">
-      <img alt="cork board" src="./assets/images/practice.jpg"/>
+      <img alt="cork board" src="./public/images/practice.jpg"/>
     </div>
       <!--  Add new practice instances -->
       <div class='practice_header hidden'>
-        <h2>Did you practice today???</h2>
       <!-- <button class="col hidden" id="show-practices-btn" type="submit">See All Practices</button> -->
       <div class="row justify-content-around">
-      <div class="dropdown col-3">
+      <div class="dropdown col-4">
         <button class="hover_practice">Add New Practice</button>
       <form id="add-practice-form" class="dropdown-content single-form">
         <input required type='date' name="date" placeholder="When did you practice" />
@@ -74,7 +121,7 @@
       </form>
     </div>
       <!--  Goal related elements -->
-      <div class='goals col-3'>
+      <div class='goals col-4'>
         <div class="dropdown">
         <button class="col hover_practice hidden" id="view-goals-btn" type="submit">Add/Edit Goals</button>
         <form id="add-goal-form" class="dropdown-content single-form hidden">Create New Goals!
@@ -109,6 +156,12 @@
           <div class='goal_weekly'></div>
           <div class="goal_monthly"></div>
         </div>
+        <br>
+        <div class="progress_labels">
+          <p id="daily_message"></p>
+          <p id="weekly_message"></p>
+          <p id="monthly_message"></p>
+        </div>
         </div>
       <!--  Practice related elements-->
       <div class="practice_index hidden">
@@ -118,8 +171,13 @@
       </section>
         </div>
         <footer>
+          <div class="footer">
+            <div class="footer_left">
       <a class="linkedin" href="https://www.linkedin.com/in/jesse-gottlieb">LinkedIn</a>
+      <a class="github" href="https://github.com/j-gottlieb">Github</a>
+    </div>
       <p class="created">Created by Jesse Gottlieb</p>
+    </div>
     </footer>
   </div>
     </body>

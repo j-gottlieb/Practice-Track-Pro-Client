@@ -8,24 +8,39 @@ h1,p {
   font-family: 'Roboto', sans-serif;
 }
 
+.btn {
+  border: 1px solid black;
+  justify-content: center;
+  // height: 60px;
+  // width: 125px;
+}
+
+// .header_buttons {
+//   margin-right: 5px;
+// }
+
 body {
   height: 100%;
   background: #fcfcfc;
 }
+
 header {
-  height: 65px;
+  height: 80px;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   margin-bottom: 2px;
   margin-top: 2px;
 }
-#sign-in-btn,
-#sign-up-btn,
-#change-password-btn,
-#sign-out-form {
-  width: 100px;
-  height: 60px;
+// #sign-in-btn,
+// #sign-up-btn,
+// #change-password-btn,
+// #sign-out-form {
+//   width: 100px;
+//   height: 60px;
+// }
+
+.auth_btns {
+  height: 100%;
 }
 
 .musical_notes {
@@ -62,6 +77,7 @@ header {
   width: 60%;
   height: 60%;
   display: inline-flex;
+  border: 2px black solid;
 }
 
 .hidden {
@@ -74,7 +90,11 @@ header {
 
 .container {
   height: 100%;
-  width: 800px;
+  width: 85%;
+}
+
+.practice_header {
+  margin-right: 15px;
 }
 
 .practices {
@@ -85,7 +105,11 @@ header {
 
 .practice_sections {
   border-top: 2px solid black;
-  border-bottom: 2px solid black;
+}
+
+.practice_display {
+  background: #bed9e5;
+  padding: 10px;
 }
 
 .remove_button {
@@ -152,9 +176,19 @@ header {
   text-align: center;
 }
 
-footer {
+.footer {
+  margin-top: 10px;
+  height: 35px;
   display: flex;
   justify-content: space-between;
+  background: #63a9cc;
+  align-items: center;
+  padding: 5px;
+  color: white;
+}
+
+.footer p {
+  align-self: flex-start;
 }
 .created {
   right: 0;
@@ -162,4 +196,27 @@ footer {
 
 .linkedin {
   left: 0;
+  color: white;
+  text-decoration: underline;
+}
+
+.github {
+  color: white;
+  margin-left: 9px;
+  text-decoration: underline;
+}
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .musical_notes {
+      display: none;
+    }
+    header {
+      margin-bottom: 15px;
+    }
+    h1, h2 {
+      font-size: 20px;
+    }
 }

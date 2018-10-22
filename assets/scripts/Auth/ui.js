@@ -7,7 +7,7 @@ const signUpSuccess = function (response) {
   $('#sign-up-form').trigger('reset')
   $('#display-message').text(`Success!`).fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'green')
-  $('#sign-up-btn, #sign-up-form').addClass('hidden')
+  // $('#sign-up-btn, #sign-up-form').addClass('hidden')
 }
 
 const signUpFailure = function () {
@@ -23,8 +23,8 @@ const signInSuccess = function (response) {
   $('#display-message').html('').hide()
   $('#sign-in-form').trigger('reset')
   $('#display-message').css('color', 'green')
-  $('#show-practices-btn, #sign-out-form, #change-password-btn, .practices, .practice_header, .goals, .display_progress_btn, #view-goals-btn, .practice_index').removeClass('hidden')
-  $('#sign-in-btn,#sign-up-btn,#sign-in-form,.cork_div').addClass('hidden')
+  $('.signed_in, #show-practices-btn, .practices, .practice_header, .goals, .display_progress_btn, #view-goals-btn, .practice_index').removeClass('hidden')
+  $('.signed_out, .cork_div').addClass('hidden')
   $('#display-message').text(`Welcome, ${store.user.email}`).fadeToggle().delay(1000).fadeToggle()
   goalEvents.onShowGoals()
 }
@@ -60,10 +60,10 @@ const signOutSuccess = function () {
   $('.practice_display, .goal_daily, .goal_weekly, .goal_monthly').html('')
   $('.edit_form, #add-practices-form').trigger('reset')
   $('#sign-up-form, #sign-in-form, #change-password-form').trigger('reset')
-  $('#display-message').text(`You have successfully signed out`).fadeToggle().delay(1000).fadeToggle()
+  $('#display-message').text(`You have signed out`).fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'green')
-  $('#sign-out-form, .refresh_progress_btn, #change-password-btn, #change-password-form, #show-practices-btn, .practices, .practice_header, .goals, .progress_dash, #edit-goal-form, #add-goal-form').addClass('hidden')
-  $('#sign-in-btn, #sign-up-btn, #display-message, .cork_div').removeClass('hidden')
+  $('.signed_in, .refresh_progress_btn, #show-practices-btn, .practices, .practice_header, .goals, .progress_dash, #edit-goal-form, #add-goal-form, .practice_index').addClass('hidden')
+  $('.signed_out, #display-message, .cork_div').removeClass('hidden')
 }
 
 const signOutFailure = function () {

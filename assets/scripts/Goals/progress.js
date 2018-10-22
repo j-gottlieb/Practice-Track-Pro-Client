@@ -17,6 +17,22 @@ Date.prototype.addDays = function(days) {
     date.setDate(date.getDate() + days)
     return date
 }
+// parse new Date() object into local date
+function toISOLocal(d) {
+  var z = n => (n<10? '0':'')+n
+  var z = n => (n<10? '0':'')+n
+  var off = d.getTimezoneOffset()
+  var off = d.getTimezoneOffset()
+  var sign = off < 0? '+' : '-'
+  var sign = off < 0? '+' : '-'
+  off = Math.abs(off)
+  off = Math.abs(off)
+
+  return d.getFullYear() + '-' + z(d.getMonth()+1) + '-' +
+         z(d.getDate()) + 'T' + z(d.getHours()) + ':'  + z(d.getMinutes()) +
+         ':' + z(d.getSeconds()) + sign + z(off/60|0) + z(off%60)
+         ':' + z(d.getSeconds()) + sign + z(off/60|0) + z(off%60)
+}
 // collect all relevant days
 const today = new Date()
 const stopDate = today
@@ -33,14 +49,16 @@ function getDates (startDate, stopDate) {
   }
   const parsedArray = []
   for (let j = 0; j < dateArray.length; j++) {
-    parsedArray.push(dateArray[j].toISOString().split('T')[0])
+    for (let j = 0; j < dateArray.length; j++) {
+      parsedArray.push(toISOLocal(dateArray[j]).split('T')[0])
+    }
+    return parsedArray
   }
-  return parsedArray
 }
 
 const todayDuration = () => {
   const todaysPractices = store.practices.filter(function (practice) {
-    return practice.date === stopDate.toISOString().split('T')[0]
+    return practice.date === toISOLocal(stopDate).split('T')[0]
   })
   let result = 0
   if (todaysPractices.length === 1) {
@@ -114,19 +132,33 @@ const showProgress = function (progress, location) {
 }
 
 const getProgresses = () => {
+  const message = function (progress, id) {
+    if (progress >= 0 && progress < 0.5) {
+      $(id).html('Get to work!')
+    } else if (progress >= 0.5 && progress < 1) {
+      $(id).html('Getting close!')
+    } else if (progress >= 1 && progress < 1.2) {
+      $(id).html('Nailed it!')
+    } else {
+      $(id).html('Slow down!')
+    }
+  }
   if (store.goals[0] === undefined) {
-    $('#progress_message').html("Set goals above to view your progress!")
+    $('#progress_message').html('Set goals above to view your progress!')
   } else {
-  $('.goal_daily, .goal_weekly, .goal_monthly').html('')
-  const dailyProgress = (todayDuration() / store.goals[0].daily)
-  const weeklyProgress = (weekDuration() / store.goals[0].weekly)
-  const monthlyProgress = (monthDuration() / store.goals[0].monthly)
-  showProgress(dailyProgress, '.goal_daily')
-  showProgress(weeklyProgress, '.goal_weekly')
-  showProgress(monthlyProgress, '.goal_monthly')
-  $('.display_progress_btn').addClass('hidden')
-  $('.progress_dash, .refresh_progress_btn').removeClass('hidden')
-}
+    $('.goal_daily, .goal_weekly, .goal_monthly').html('')
+    const dailyProgress = (todayDuration() / store.goals[0].daily)
+    const weeklyProgress = (weekDuration() / store.goals[0].weekly)
+    const monthlyProgress = (monthDuration() / store.goals[0].monthly)
+    showProgress(dailyProgress, '.goal_daily')
+    message(dailyProgress, '#daily_message')
+    showProgress(weeklyProgress, '.goal_weekly')
+    message(weeklyProgress, '#weekly_message')
+    showProgress(monthlyProgress, '.goal_monthly')
+    message(monthlyProgress, '#monthly_message')
+    $('.display_progress_btn').addClass('hidden')
+    $('.progress_dash, .refresh_progress_btn').removeClass('hidden')
+  }
 }
 
 module.exports = {

@@ -50,6 +50,7 @@ const onAddPractice = function (event) {
     .then(() => onShowPractices(event))
     .catch()
   $('#add-practice-form').trigger('reset')
+  $('#add-practice-btn').dropdown('toggle')
 }
 
 module.exports = {

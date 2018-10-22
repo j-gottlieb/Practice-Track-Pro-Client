@@ -9,7 +9,7 @@ const showPracticesSuccess = function (response) {
   if (response.practices.length > 0) {
     $('.practice_display').html(showPracticesHtml)
   } else {
-    $('.practice_display').html("You haven't practiced yet, ya bastard!")
+    $('.practice_display').html("You haven't practiced yet! What would your mother say...")
   }
 }
 

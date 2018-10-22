@@ -12,16 +12,14 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <nav class="navbar navbar-light bg-light">
-      <!-- <a class="navbar-brand">Navbar</a> -->
-      <div class="title col-7">
+      <nav class="navbar main-nav">
+      <div class="title col-6">
     <h1>Practice Track Pro</h1>
   </div>
   <div class="class-div col">
     <div id="display-message" class="display-message">
   </div>
   </div>
-  <!-- <div class="auth_btns row col"> -->
     <div class="signed_out row">
       <div class="btn-group">
         <button id="sign-up-btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -66,6 +64,11 @@
           </form>
         </ul>
       </div>
+      <div class="btn-group">
+        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-controls="collapseExample">
+        About PTP
+        </button>
+    </div>
       </div>
     <div class="signed_in hidden row">
       <div class="btn-group">
@@ -92,42 +95,44 @@
         Sign Out
       </button>
       </div>
-      </div>
       <div class="btn-group">
-    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      About PTP
-    </button>
-</div>
+        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-controls="collapseExample">
+        About PTP
+        </button>
+    </div>
+      </div>
     </nav>
 
     <div class="container">
       <div class="collapse" id="collapseExample">
-        <div class="card row card-body">
+        <div class="row justify-content-between about card-body">
           <div class="col-6">
           PTP stores your practice sessions and goals so you can track
             your progress and stay on course!
           </div>
-            <div class="col-6 row">
+            <div class="col-6 align-items-end links">
               <div>
-    <a class="linkedin col" href="https://www.linkedin.com/in/jesse-gottlieb">LinkedIn</a>
-  </div>
-  <div>
-    <a class="github col" href="https://github.com/j-gottlieb">Github</a>
-  </div>
-  <div>
-    <p class="created col">Created by Jesse Gottlieb</p>
-  </div>
+                <a class="linkedin" href="https://www.linkedin.com/in/jesse-gottlieb">LinkedIn</a>
+              </div>
+              <div>
+                <a class="github" href="https://github.com/j-gottlieb">Github</a>
+              </div>
+              <div>
+                <p class="created">Created by Jesse Gottlieb</p>
+              </div>
       </div>
     </div>
       </div>
     <div class="musical_notes">
       <img alt="musical notes" class="img-fluid" src="./public/images/musical-notes.jpg"/>
     </div>
-
+<div class="mom">
 <h2>Did you practice today???</h2>
-<nav class="navbar practice_header hidden navbar-light bg-light">
+</div>
+<nav class="navbar progress-nav practice_header hidden">
+
   <div class="btn-group">
-  <button class="btn my-2 my-sm-0 dropdown-toggle hover_practice" data-toggle="dropdown">Add New Practice</button>
+  <button id="add-practice-btn" class="btn dropdown-toggle hover_practice" data-toggle="dropdown">Add New Practice</button>
   <ul class="dropdown-menu">
 <form id="add-practice-form" class="dropdown-content single-form">
   <div class="form-group">
@@ -144,58 +149,62 @@
 </div>
 
   <div class="btn-group">
-  <button class="btn my-2 my-sm-0 dropdown-toggle hover_practice" data-toggle="dropdown">Add/Edit Goals</button>
+  <button id="add-goal-btn" class="btn dropdown-toggle hover_practice" data-toggle="dropdown" type="submit" >Add/Edit Goals</button>
   <ul class="dropdown-menu">
   <form id="add-goal-form" class="dropdown-content single-form">
     <div class="form-group">
-    <input required type='number' name="daily" placeholder="Daily Goal" />
+    <input required type='number' min="0" name="daily" placeholder="Daily Goal" />
     </div>
     <div class="form-group">
-    <input required type='number' name="weekly" placeholder="Weekly Goal" />
+    <input required type='number' min="0" name="weekly" placeholder="Weekly Goal" />
   </div>
     <div class="form-group">
-    <input required type='number' name="monthly" placeholder="Monthly Goal" />
+    <input required type='number' min="0" name="monthly" placeholder="Monthly Goal" />
   </div>
     <div class="form-group">
-    </div>
     <input type="submit" />
+    </div>
   </form>
 </ul>
 </div>
 
-<p>
-<button class="btn btn-primary display_progress_btn hover_practice col" type="button" data-toggle="collapse" data-target="#progress" aria-expanded="false" aria-controls="collapseExample">Show Progress</button>
-</p>
+<div class="btn-group">
+<button class="btn display_progress_btn hover_practice" type="submit" data-toggle="collapse" data-target="#progress" >Show Progress</button>
+</div>
 
 </nav>
 <div class="collapse" id="progress">
-<div>
-<button class="btn btn-primary refresh_progress_btn hover_practice" type="button" aria-expanded="false" aria-controls="collapseExample">Refresh Progress</button>
+<div class="refresh_progress_btn">
+<button class="btn refresh refresh_progress_btn hover_practice" type="button" aria-expanded="false" aria-controls="collapseExample">Refresh Progress</button>
 </div>
-<div class="row hidden progress_dash goals">
+<div class="dash_message">
+</div>
+<div class="row justify-content-between hidden progress_dash goals">
     <div class="progress_block col-3">
       <h4>Daily:</h4>
       <div class='goal_daily'></div>
       <br>
-      <p id="daily_message"></p>
+      <p class="progress-message"id="daily_message"></p>
     </div>
     <div class="progress_block col-3">
       <h4>Weekly:</h4>
       <div class='goal_weekly'></div>
       <br>
-      <p id="weekly_message"></p>
+      <p class="progress-message"id="weekly_message"></p>
     </div>
     <div class="progress_block col-3">
       <h4>Monthly:</h4>
       <div class="goal_monthly"></div>
       <br>
-      <p id="monthly_message"></p>
+      <p class="progress-message"id="monthly_message"></p>
     </div>
   </div>
 
   </div>
   <div class="practice_index hidden">
-  <h3>View/Edit Practices Below:</h3>
+    <div class="p_header">
+  <h5>View/Edit Practices Below:</h5>
+</div>
   <section class='practices hidden'>
     <div class='practice_display'></div>
   </section>

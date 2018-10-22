@@ -15,6 +15,16 @@ const onRemoveGoal = function (event) {
   }
 }
 
+const onUpdateGoal = function (event) {
+  console.log(store.goals[0])
+  event.preventDefault()
+  if (store.goals[0] !== undefined) {
+    onEditGoal(event)
+  } else {
+    onAddGoal(event)
+  }
+}
+
 const onEditGoal = function (event) {
   // console.log(store.goals[0].id)
   event.preventDefault()
@@ -56,6 +66,7 @@ const onShowGoals = function () {
 }
 
 const onAddGoal = function (event) {
+  // console.log('trying to edit goal!')
   event.preventDefault()
   const goalData = getFormFields(event.target)
   api.addGoal(goalData)
@@ -67,8 +78,7 @@ const addHandlers = () => {
   // this allows each book to be clickable after all the books have loaded.
   // You can't add an event for dom elements that don't exist until after the
   //  page loads.
-  $('#edit-goal-form').on('submit', onEditGoal)
-  $('#add-goal-form').on('submit', onAddGoal)
+  $('#add-goal-form').on('submit', onUpdateGoal)
   $('#view-goals-btn').on('click', onViewGoals)
   $('.display_progress_btn, .refresh_progress_btn').on('click', progress.getProgresses)
 }

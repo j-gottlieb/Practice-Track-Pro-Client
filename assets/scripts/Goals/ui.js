@@ -21,11 +21,13 @@ const editGoalSuccess = (response) => {
   store.goals.pop()
   store.goals.push(response.goal)
   $('.edit-goal-form').trigger('reset')
+  $('#add-goal-btn').dropdown('toggle')
 }
 
 const addGoalSuccess = (response) => {
   store.goals = response.goals
   $('#add-goal-form').trigger('reset')
+  $('#add-goal-btn').dropdown('toggle')
 }
 
 module.exports = {

@@ -144,8 +144,13 @@ const getProgresses = () => {
     }
   }
   if (store.goals[0] === undefined) {
-    $('#progress_message').html('Set goals above to view your progress!')
+    $('.dash_message').css('color', 'red')
+    $('.dash_message').text('Set goals above to view your progress!')
+  } else if (store.practices[0] === undefined) {
+    $('.dash_message').css('color', 'red')
+    $('.dash_message').text("You haven't practiced yet!")
   } else {
+    $('.dash_message').text('')
     $('.goal_daily, .goal_weekly, .goal_monthly').html('')
     const dailyProgress = (todayDuration() / store.goals[0].daily)
     const weeklyProgress = (weekDuration() / store.goals[0].weekly)
@@ -156,7 +161,7 @@ const getProgresses = () => {
     message(weeklyProgress, '#weekly_message')
     showProgress(monthlyProgress, '.goal_monthly')
     message(monthlyProgress, '#monthly_message')
-    $('.display_progress_btn').addClass('hidden')
+    // $('.display_progress_btn').addClass('hidden')
     $('.progress_dash, .refresh_progress_btn').removeClass('hidden')
   }
 }

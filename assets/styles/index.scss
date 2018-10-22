@@ -3,3 +3,67 @@
 .hidden {
   display: none;
 }
+
+.main-nav, .practice_header {
+  background-color: #edf4ff;
+  border-bottom: 1px solid #546684;
+}
+
+.about {
+  border: 1px solid black;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.mom {
+  text-align: center;
+  color: #bc2727;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.links {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.progress_dash {
+  border-radius: 5px;
+  border: 2px solid #2a4268;
+  padding: 15px;
+  background: #edf4ff;
+}
+
+.refresh_progress_btn {
+  text-align: center;
+}
+
+.refresh {
+  border: 1px black solid;
+}
+
+.p_header {
+  margin-top: 40px;
+}
+
+.practice_display {
+  background: #edf4ff;
+  border: 2px solid black;
+  height: 350px;
+  overflow: scroll;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.practice_sections {
+  border-top: 2px solid black;
+}
+
+.remove_button {
+  border: 1px solid black;
+  font-size: 12px;
+  height: 40px;
+  width: 200px;
+  color: red;
+}

@@ -43,13 +43,14 @@ const changePasswordSuccess = function (response) {
   $('#display-message').text(`Successfully changed password!`).fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'green')
   $('#change-password-form').addClass('hidden')
+  $('#change-password-btn').dropdown('toggle')
 }
 
 const changePasswordFailure = function () {
   $('#display-message').html('').hide()
   $('#display-message').text('Something went wrong, please try again').fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'red')
-  $('#sign-up-form').trigger('reset')
+  $('.dropdown-toggle').trigger('reset')
 }
 
 const signOutSuccess = function () {
@@ -57,13 +58,14 @@ const signOutSuccess = function () {
   store.goals = null
   store.practices = null
   $('#display-message').html('').hide()
-  $('.practice_display, .goal_daily, .goal_weekly, .goal_monthly').html('')
-  $('.edit_form, #add-practices-form').trigger('reset')
+  $('.practice_display, .goal_daily, .goal_weekly, .goal_monthly, #daily_message, #weekly_message, #monthly_message').html('')
+  $('.edit_form, #add-practices-form, #add-goal-form').trigger('reset')
   $('#sign-up-form, #sign-in-form, #change-password-form').trigger('reset')
   $('#display-message').text(`You have signed out`).fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'green')
-  $('.signed_in, .refresh_progress_btn, #show-practices-btn, .practices, .practice_header, .goals, .progress_dash, #edit-goal-form, #add-goal-form, .practice_index').addClass('hidden')
+  $('.signed_in, #show-practices-btn, .practices, .practice_header, .goals, .progress_dash, .practice_index').addClass('hidden')
   $('.signed_out, #display-message, .cork_div').removeClass('hidden')
+  $('.collapse').collapse('hide')
 }
 
 const signOutFailure = function () {

@@ -127,7 +127,7 @@ const showProgress = function (progress, location) {
     }
   })
   bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif'
-  bar.text.style.fontSize = '2rem'
+  bar.text.style.fontSize = '.8rem'
   bar.animate(progress)
 }
 

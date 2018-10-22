@@ -1,0 +1,82 @@
+  <div class="musical_notes">
+    <img alt="musical notes" src="./public/images/musical-notes.jpg"/>
+    <div class="description">
+    <p>PTP stores your practice sessions and goals so you can track
+      your progress and stay on course!
+    </p>
+  </div>
+  </div>
+  <!--  Auth related elements-->
+  <h2>Did you practice today???</h2>
+<div class="cork_div">
+<img alt="cork board" src="./public/images/practice.jpg"/>
+</div>
+<!--  Add new practice instances -->
+<div class='practice_header hidden'>
+<!-- <button class="col hidden" id="show-practices-btn" type="submit">See All Practices</button> -->
+<div class="row justify-content-around">
+<div class="dropdown col-4">
+  <button class="hover_practice">Add New Practice</button>
+<form id="add-practice-form" class="dropdown-content single-form">
+  <input required type='date' name="date" placeholder="When did you practice" />
+  <input required type='number' name="duration" placeholder="# of minutes" />
+  <input type="submit" />
+</form>
+</div>
+<!--  Goal related elements -->
+<div class='goals col-4'>
+  <div class="dropdown">
+  <button class="col hover_practice hidden" id="view-goals-btn" type="submit">Add/Edit Goals</button>
+  <form id="add-goal-form" class="dropdown-content single-form hidden">Create New Goals!
+    <input required type='number' name="daily" placeholder="Daily Goal" />
+    <input required type='number' name="weekly" placeholder="Weekly Goal" />
+    <input required type='number' name="monthly" placeholder="Monthly Goal" />
+    <input type="submit" />
+  </form>
+</div>
+</div>
+<button type='submit' class="refresh_progress_btn hidden hover_practice col">Refresh Progress</button>
+<button type='submit' class="display_progress_btn hover_practice col">Show Progress</button>
+</div>
+</div>
+  <div class='goal_display'>
+  <p id="progress_message"></p>
+  </div>
+  <div class='progress_dash row hidden'>
+    <div class="progress_block col">
+      <h4>Daily:</h4>
+      <div class='goal_daily'></div>
+      <br>
+      <p id="daily_message"></p>
+    </div>
+    <div class="progress_block col">
+      <h4>Weekly:</h4>
+      <div class='goal_weekly'></div>
+      <br>
+      <p id="weekly_message"></p>
+    </div>
+    <div class="progress_block col">
+      <h4>Monthly:</h4>
+      <div class="goal_monthly"></div>
+      <br>
+      <p id="monthly_message"></p>
+    </div>
+
+  </div>
+<!--  Practice related elements-->
+<div class="practice_index hidden">
+<h3>View/Edit Practices Below:</h3>
+<section class='practices hidden'>
+  <div class='practice_display'></div>
+</section>
+  </div>
+  <footer>
+    <div class="footer">
+      <div class="footer_left">
+<a class="linkedin" href="https://www.linkedin.com/in/jesse-gottlieb">LinkedIn</a>
+<a class="github" href="https://github.com/j-gottlieb">Github</a>
+</div>
+<p class="created">Created by Jesse Gottlieb</p>
+</div>
+</footer>
+</div>

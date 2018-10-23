@@ -16,13 +16,13 @@ Wireframe: https://github.com/j-gottlieb/Practice-Track-Pro-Client/blob/master/p
 
 
 ## Technologies Used
-⋅⋅* HTML
-⋅⋅* SCSS
-⋅⋅* Bootstrap
-⋅⋅* Javascript
-⋅⋅* JQuery
-⋅⋅* Handlebars
-⋅⋅* [Progressbar.js](https://progressbarjs.readthedocs.io/en/1.0.0/)
+* HTML
+* SCSS
+* Bootstrap
+* Javascript
+* JQuery
+* Handlebars
+* [Progressbar.js](https://progressbarjs.readthedocs.io/en/1.0.0/)
 
 
 ## Planning
@@ -38,10 +38,10 @@ Next, I created user stories and used them to draw out the flow of the site.
 
   # User Stories
   A user can:
-    ⋅⋅* sign up, sign in, change password, and sign out
-    ⋅⋅* create, edit and view their own daily, weekly, and monthly practice goal
-    ⋅⋅* create, edit, delete, and view their own practice instances
-    ⋅⋅* view their progress toward each goal in a dashboard
+    * sign up, sign in, change password, and sign out
+    * create, edit and view their own daily, weekly, and monthly practice goal
+    * create, edit, delete, and view their own practice instances
+    * view their progress toward each goal in a dashboard
 
 With flow established, I needed to create the logic that would parse through the
 practice instances and calculate each goal's progress. This was where I learned a ton about
@@ -64,8 +64,8 @@ bootstrap-atizing the site.
 ## Future Versions
 
 I hope to include the following features in future version:
-⋅⋅* Goals calculated by calendar month, not the last 30 consecutive days.
-⋅⋅* View goals and records achieved by other users (high score!)
-⋅⋅* Create profile picture
-⋅⋅* Add multiple instrument profiles for each user
-⋅⋅* Create social aspect - add friends, messaging, etc...
+* Goals calculated by calendar month, not the last 30 consecutive days.
+* View goals and records achieved by other users (high score!)
+* Create profile picture
+* Add multiple instrument profiles for each user
+* Create social aspect - add friends, messaging, etc...

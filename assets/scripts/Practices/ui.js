@@ -13,14 +13,16 @@ const showPracticesSuccess = function (response) {
 }
 
 const removePracticeSuccess = () => {
+  console.log('deleting')
   $('#remove-practice-alert').removeClass('hidden')
   $('#remove-practice-alert').fadeTo(2000, 500).slideUp(500, function () {
     $('#remove-practice-alert').slideUp(500)
   })
-  $(event.target.getAttribute('data-id')).empty()
+  // $(event.target.getAttribute('data-id')).empty()
 }
 
 const editPracticeSuccess = () => {
+  console.log('yo')
   $('#edit-practice-alert').removeClass('hidden')
   $('#edit-practice-alert').fadeTo(2000, 500).slideUp(500, function () {
     $('#edit-practice-alert').slideUp(500)

@@ -35,7 +35,7 @@ helful to have a reference from which to work.
 
 Next, I created user stories and used them to draw out the flow of the site.
 
-  # User Stories
+  ### User Stories
   A user can:
     * sign up, sign in, change password, and sign out
     * create, edit and view their own daily, weekly, and monthly practice goal

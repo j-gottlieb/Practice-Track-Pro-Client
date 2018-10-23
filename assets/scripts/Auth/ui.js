@@ -27,6 +27,7 @@ const signInSuccess = function (response) {
   $('.signed_out, .cork_div').addClass('hidden')
   $('#display-message').text(`Welcome, ${store.user.email}`).fadeToggle().delay(1000).fadeToggle()
   goalEvents.onShowGoals()
+  $('.collapse').collapse('hide')
 }
 
 const signInFailure = function () {

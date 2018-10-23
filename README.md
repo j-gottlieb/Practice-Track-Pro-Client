@@ -10,9 +10,8 @@ All data is stored in a custom api. You may find the repo for the PTP repo [here
 
 
 ## Image Links
-ERD:
-https://github.com/j-gottlieb/Practice-Track-Pro-Client/blob/master/public/images/ERD.jpg
-Wireframe: https://github.com/j-gottlieb/Practice-Track-Pro-Client/blob/master/public/images/Wireframe.jpg
+[ERD](https://github.com/j-gottlieb/Practice-Track-Pro-Client/blob/master/public/images/ERD.jpg)
+[Wireframe](https://github.com/j-gottlieb/Practice-Track-Pro-Client/blob/master/public/images/Wireframe.jpg)
 
 
 ## Technologies Used

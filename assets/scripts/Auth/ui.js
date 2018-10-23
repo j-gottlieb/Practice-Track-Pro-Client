@@ -30,7 +30,6 @@ const signInSuccess = function (response) {
 }
 
 const signInFailure = function () {
-  // console.log('we signed in!')
   $('#display-message').html('').hide()
   $('#display-message').text('Something went wrong, please try again').fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'red')

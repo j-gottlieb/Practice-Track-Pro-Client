@@ -6,23 +6,38 @@ const store = require('../store.js')
 const onRemovePractice = function (event) {
   event.preventDefault()
   const practiceId = $(event.target).closest('section').data('id')
-  // console.log(practiceId)
   api.removePractice(practiceId)
     .then(() => onShowPractices(event))
+    .then(ui.removePracticeSuccess)
     .catch(ui.removePracticeFailure)
 }
 
 const onEditPractice = function (event) {
+  let practice
+  for (let i = 0; i < store.practices.length; i++) {
+    if (store.practices[i].id === $(event.target).closest('section').data('id')) {
+      practice = store.practices[i]
+    }
+  }
   event.preventDefault()
   if (getFormFields(event.target).date) {
-    store.practices[0].date = getFormFields(event.target).date
+    practice.date = getFormFields(event.target).date
   }
   if (getFormFields(event.target).duration) {
-    store.practices[0].duration = getFormFields(event.target).duration
+    practice.duration = getFormFields(event.target).duration
   }
-  const practiceData = store.practices[0]
-  api.editPractice(practiceData)
+  if (getFormFields(event.target).date === '' && getFormFields(event.target).duration === '') {
+    $('#fail-practice-alert').removeClass('hidden')
+    $('#fail-practice-alert').fadeTo(2000, 500).slideUp(500, function () {
+      $('#fail-practice-alert').slideUp(500)
+    })
+    return
+  }
+  const id = practice.id
+  const practiceData = practice
+  api.editPractice(practiceData, id)
     .then(() => onShowPractices(event))
+    .then(ui.editPracticeSuccess)
     .catch()
   $('.edit_form').trigger('reset')
 }
@@ -36,8 +51,6 @@ const addHandlers = () => {
 }
 
 const onShowPractices = function (event) {
-  // event.preventDefault()
-  // const credentials = getFormFields(event.target)
   api.showPractices()
     .then(ui.showPracticesSuccess)
     .catch()
@@ -48,6 +61,7 @@ const onAddPractice = function (event) {
   const practiceData = getFormFields(event.target)
   api.addPractice(practiceData)
     .then(() => onShowPractices(event))
+    .then(ui.newPracticeSuccess)
     .catch()
   $('#add-practice-form').trigger('reset')
   $('#add-practice-btn').dropdown('toggle')

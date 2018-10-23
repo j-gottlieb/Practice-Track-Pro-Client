@@ -1024,7 +1024,6 @@ var Tweenable = (function () {
    *       color: '#000'
    *     }, 0.5);
    *
-   *     console.log(interpolatedValues);
    *     // {opacity: 0.5, width: "150px", color: "rgb(127,127,127)"}
    *
    * @static

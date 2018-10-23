@@ -2,14 +2,6 @@ const store = require('../store.js')
 
 const showGoalsSuccess = function (response) {
   store.goals = response.goals
-  // console.log(store.goals)
-  // progress.showProgress()
-  // const showGoalsHtml = showGoalsTemplate({ goals: response.goals })
-  // if (response.goals.length > 0) {
-  //   $('.goal_display').html(showGoalsHtml)
-  // } else {
-  //   $('.goal_display').html("You haven't your goals yet, ya bastard!")
-  // }
 }
 
 const removeGoalSuccess = () => {
@@ -19,12 +11,20 @@ const removeGoalSuccess = () => {
 const editGoalSuccess = (response) => {
   store.goals.pop()
   store.goals.push(response.goal)
+  $('#new-goal-alert').removeClass('hidden')
+  $('#new-goal-alert').fadeTo(2000, 500).slideUp(500, function () {
+    $('#new-goal-alert').slideUp(500)
+  })
   $('.edit-goal-form').trigger('reset')
   $('#add-goal-btn').dropdown('toggle')
 }
 
 const addGoalSuccess = (response) => {
   store.goals.push(response.goal)
+  $('#new-goal-alert').removeClass('hidden')
+  $('#new-goal-alert').fadeTo(2000, 500).slideUp(500, function () {
+    $('#new-goal-alert').slideUp(500)
+  })
   $('#add-goal-form').trigger('reset')
   $('#add-goal-btn').dropdown('toggle')
 }

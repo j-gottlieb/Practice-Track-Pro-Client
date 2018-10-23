@@ -7,7 +7,6 @@ const store = require('../store.js')
 const onRemoveGoal = function (event) {
   event.preventDefault()
   const goalId = $(event.target).closest('section').data('id')
-  // console.log(goalId)
   if (confirm('Are you sure you want to delete this goal?')) {
     api.removeGoal(goalId)
       .then(() => onShowGoals(event))
@@ -16,7 +15,6 @@ const onRemoveGoal = function (event) {
 }
 
 const onUpdateGoal = function (event) {
-  console.log(store.goals[0])
   event.preventDefault()
   if (store.goals[0] !== undefined) {
     onEditGoal(event)
@@ -26,9 +24,7 @@ const onUpdateGoal = function (event) {
 }
 
 const onEditGoal = function (event) {
-  // console.log(store.goals[0].id)
   event.preventDefault()
-  // console.log(getFormFields(event.target).daily)
   if (getFormFields(event.target).daily) {
     store.goals[0].daily = getFormFields(event.target).daily
   }
@@ -38,10 +34,7 @@ const onEditGoal = function (event) {
   if (getFormFields(event.target).monthly) {
     store.goals[0].monthly = getFormFields(event.target).monthly
   }
-  // console.log(getFormFields(event.target))
   const goalData = store.goals[0]
-  // console.log(goalData.id)
-  // console.log(getFormFields(event.target))
   api.editGoal(goalData)
     .then(ui.editGoalSuccess)
     .catch()
@@ -49,7 +42,6 @@ const onEditGoal = function (event) {
 }
 
 const onViewGoals = function () {
-  // console.log(store.goals)
   if (store.goals[0] === undefined) {
     $('#add-goal-form').removeClass('hidden')
   } else if (store.goals[0].daily !== null) {
@@ -58,8 +50,6 @@ const onViewGoals = function () {
 }
 
 const onShowGoals = function () {
-  // event.preventDefault()
-  // const credentials = getFormFields(event.target)
   api.showGoals()
     .then(ui.showGoalsSuccess)
     .catch()
@@ -68,7 +58,6 @@ const onShowGoals = function () {
 const onAddGoal = function (event) {
   event.preventDefault()
   const goalData = getFormFields(event.target)
-  console.log(goalData)
   api.addGoal(goalData)
     .then(ui.addGoalSuccess)
     .catch()

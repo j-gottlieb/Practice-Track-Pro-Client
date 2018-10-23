@@ -4,7 +4,6 @@ const progress = require('../Goals/progress.js')
 
 const showPracticesSuccess = function (response) {
   store.practices = response.practices
-  // console.log(response)
   const showPracticesHtml = showPracticesTemplate({ practices: response.practices })
   if (response.practices.length > 0) {
     $('.practice_display').html(showPracticesHtml)
@@ -14,19 +13,31 @@ const showPracticesSuccess = function (response) {
 }
 
 const removePracticeSuccess = () => {
+  $('#remove-practice-alert').removeClass('hidden')
+  $('#remove-practice-alert').fadeTo(2000, 500).slideUp(500, function () {
+    $('#remove-practice-alert').slideUp(500)
+  })
   $(event.target.getAttribute('data-id')).empty()
 }
 
 const editPracticeSuccess = () => {
+  $('#edit-practice-alert').removeClass('hidden')
+  $('#edit-practice-alert').fadeTo(2000, 500).slideUp(500, function () {
+    $('#edit-practice-alert').slideUp(500)
+  })
 }
 
-const addPracticeSuccess = () => {
+const newPracticeSuccess = () => {
+  $('#new-practice-alert').removeClass('hidden')
+  $('#new-practice-alert').fadeTo(2000, 500).slideUp(500, function () {
+    $('#new-practice-alert').slideUp(500)
+  })
   $('#add-practice-form').trigger('reset')
-  progress.getProgresses()
+  // progress.getProgresses()
 }
 module.exports = {
   showPracticesSuccess,
   removePracticeSuccess,
   editPracticeSuccess,
-  addPracticeSuccess
+  newPracticeSuccess
 }

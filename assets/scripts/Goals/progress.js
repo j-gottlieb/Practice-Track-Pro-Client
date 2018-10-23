@@ -132,8 +132,6 @@ const showProgress = function (progress, location) {
 }
 
 const getProgresses = () => {
-  // console.log(store.goals)
-  // console.log(store.practices)
   const message = function (progress, id) {
     if (progress >= 0 && progress < 0.5) {
       $(id).html('Get to work!')
@@ -157,13 +155,15 @@ const getProgresses = () => {
     const dailyProgress = (todayDuration() / store.goals[0].daily)
     const weeklyProgress = (weekDuration() / store.goals[0].weekly)
     const monthlyProgress = (monthDuration() / store.goals[0].monthly)
+    $('#daily-goal').html(`${store.goals[0].daily} mins`)
+    $('#weekly-goal').html(`${store.goals[0].weekly} mins`)
+    $('#monthly-goal').html(`${store.goals[0].monthly} mins`)
     showProgress(dailyProgress, '.goal_daily')
     message(dailyProgress, '#daily_message')
     showProgress(weeklyProgress, '.goal_weekly')
     message(weeklyProgress, '#weekly_message')
     showProgress(monthlyProgress, '.goal_monthly')
     message(monthlyProgress, '#monthly_message')
-    // $('.display_progress_btn').addClass('hidden')
     $('.progress_dash, .refresh_progress_btn').removeClass('hidden')
   }
 }

@@ -21,7 +21,6 @@ const onShowSignIn = function () {
   $('#sign-in-form').trigger('reset')
   $('#sign-in-form').removeClass('hidden')
   $('#sign-up-form').addClass('hidden')
-  // console.log('showing sign-in form')
 }
 
 const onShowChangePassword = function () {

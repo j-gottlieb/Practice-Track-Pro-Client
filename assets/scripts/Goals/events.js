@@ -66,9 +66,9 @@ const onShowGoals = function () {
 }
 
 const onAddGoal = function (event) {
-  // console.log('trying to edit goal!')
   event.preventDefault()
   const goalData = getFormFields(event.target)
+  console.log(goalData)
   api.addGoal(goalData)
     .then(ui.addGoalSuccess)
     .catch()

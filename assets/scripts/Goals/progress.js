@@ -7,31 +7,31 @@ const store = require('../store.js')
 
 // this adds a subtract days property to the Date prototype
 Date.prototype.subtractDays = function(days) {
-    const date = new Date(this.valueOf())
-    date.setDate(date.getDate() - days)
-    return date
+  const date = new Date(this.valueOf())
+  date.setDate(date.getDate() - days)
+  return date
 }
 // this adds an add days property to the Date prototype
 Date.prototype.addDays = function(days) {
-    const date = new Date(this.valueOf())
-    date.setDate(date.getDate() + days)
-    return date
+  const date = new Date(this.valueOf())
+  date.setDate(date.getDate() + days)
+  return date
 }
 // parse new Date() object into local date
-function toISOLocal(d) {
-  var z = n => (n<10? '0':'')+n
-  var z = n => (n<10? '0':'')+n
-  var off = d.getTimezoneOffset()
-  var off = d.getTimezoneOffset()
-  var sign = off < 0? '+' : '-'
-  var sign = off < 0? '+' : '-'
+function toISOLocal (d) {
+  let z = n => (n < 10 ? '0' : '') + n
+  z = n => (n < 10 ? '0' : '') + n
+  let off = d.getTimezoneOffset()
+  off = d.getTimezoneOffset()
+  let sign = off < 0 ? '+' : '-'
+  sign = off < 0 ? '+' : '-'
   off = Math.abs(off)
   off = Math.abs(off)
 
-  return d.getFullYear() + '-' + z(d.getMonth()+1) + '-' +
-         z(d.getDate()) + 'T' + z(d.getHours()) + ':'  + z(d.getMinutes()) +
-         ':' + z(d.getSeconds()) + sign + z(off/60|0) + z(off%60)
-         ':' + z(d.getSeconds()) + sign + z(off/60|0) + z(off%60)
+  return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' +
+     z(d.getDate()) + 'T' + z(d.getHours()) + ':' + z(d.getMinutes()) +
+     ':' + z(d.getSeconds()) + sign + z(off / 60|0) + z(off%60)
+     ':' + z(d.getSeconds()) + sign + z(off/60|0) + z(off%60)
 }
 // collect all relevant days
 const today = new Date()
@@ -132,6 +132,8 @@ const showProgress = function (progress, location) {
 }
 
 const getProgresses = () => {
+  // console.log(store.goals)
+  // console.log(store.practices)
   const message = function (progress, id) {
     if (progress >= 0 && progress < 0.5) {
       $(id).html('Get to work!')

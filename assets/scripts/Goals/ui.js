@@ -1,5 +1,4 @@
 const store = require('../store.js')
-// const showGoalsTemplate = require('../templates/goals-listing.handlebars')
 
 const showGoalsSuccess = function (response) {
   store.goals = response.goals
@@ -25,7 +24,7 @@ const editGoalSuccess = (response) => {
 }
 
 const addGoalSuccess = (response) => {
-  store.goals = response.goals
+  store.goals.push(response.goal)
   $('#add-goal-form').trigger('reset')
   $('#add-goal-btn').dropdown('toggle')
 }

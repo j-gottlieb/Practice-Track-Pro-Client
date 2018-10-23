@@ -1,10 +1,24 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+# Summary
+Welcome to Practice Track Pro! This application is a tool to help you record
+practice sessions, set goals and view your progress. Once you create an account,
+you will be able to sign in, change your password, create a daily, weekly and
+monthly goal, create a new practice instance with a date and duration, view your
+progress and sign out. Every practice instance and goal is editable. Users may
+only access their own data and must be logged in to do so.
 
-# browser-template
+All data is stored in a custom api. You may find the repo for the PTP repo [here]
+(https://github.com/j-gottlieb/Practice-Track-Pro-API)
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+
+# Image Links
+ERD:
+https://github.com/j-gottlieb/Practice-Track-Pro-Client/blob/master/public/images/ERD.jpg
+Wireframe: https://github.com/j-gottlieb/Practice-Track-Pro-Client/blob/master/public/images/Wireframe.jpg
+
+
+# Technologies Used:
+
+
 
 ## Installation
 

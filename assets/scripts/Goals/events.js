@@ -38,7 +38,7 @@ const onEditGoal = function (event) {
   api.editGoal(goalData)
     .then(ui.editGoalSuccess)
     .catch()
-  $('#edit-goal-form').trigger('reset')
+  $('#add-goal-form').trigger('reset')
 }
 
 const onViewGoals = function () {

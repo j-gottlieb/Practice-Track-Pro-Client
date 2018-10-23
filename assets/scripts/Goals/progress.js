@@ -155,9 +155,15 @@ const getProgresses = () => {
     const dailyProgress = (todayDuration() / store.goals[0].daily)
     const weeklyProgress = (weekDuration() / store.goals[0].weekly)
     const monthlyProgress = (monthDuration() / store.goals[0].monthly)
-    $('#daily-goal').html(`${store.goals[0].daily} mins`)
-    $('#weekly-goal').html(`${store.goals[0].weekly} mins`)
-    $('#monthly-goal').html(`${store.goals[0].monthly} mins`)
+    if (store.goals[0].daily) {
+      $('#daily-goal').html(`${store.goals[0].daily} mins`)
+    }
+    if (store.goals[0].weekly) {
+      $('#weekly-goal').html(`${store.goals[0].weekly} mins`)
+    }
+    if (store.goals[0].monthly) {
+      $('#monthly-goal').html(`${store.goals[0].monthly} mins`)
+    }
     showProgress(dailyProgress, '.goal_daily')
     message(dailyProgress, '#daily_message')
     showProgress(weeklyProgress, '.goal_weekly')

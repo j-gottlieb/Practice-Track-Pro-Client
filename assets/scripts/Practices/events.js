@@ -2,6 +2,7 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('../store.js')
+const progress = require('../Goals/progress.js')
 
 const onRemovePractice = function (event) {
   event.preventDefault()
@@ -9,6 +10,7 @@ const onRemovePractice = function (event) {
   api.removePractice(practiceId)
     .then(() => onShowPractices(event))
     .then(ui.removePracticeSuccess)
+    .then(progress.getProgresses)
     .catch(ui.removePracticeFailure)
 }
 
@@ -24,7 +26,7 @@ const onEditPractice = function (event) {
     practice.date = getFormFields(event.target).date
   }
   if (getFormFields(event.target).duration) {
-    practice.duration = getFormFields(event.target).duration
+    practice.duration = parseInt(getFormFields(event.target).duration, 10)
   }
   if (getFormFields(event.target).date === '' && getFormFields(event.target).duration === '') {
     $('#fail-practice-alert').removeClass('hidden')
@@ -38,6 +40,7 @@ const onEditPractice = function (event) {
   api.editPractice(practiceData, id)
     .then(() => onShowPractices(event))
     .then(ui.editPracticeSuccess)
+    .then(progress.getProgresses)
     .catch()
   $('.edit_form').trigger('reset')
 }
@@ -62,6 +65,7 @@ const onAddPractice = function (event) {
   api.addPractice(practiceData)
     .then(() => onShowPractices(event))
     .then(ui.newPracticeSuccess)
+    .then(progress.getProgresses)
     .catch()
   $('#add-practice-form').trigger('reset')
   $('#add-practice-btn').dropdown('toggle')

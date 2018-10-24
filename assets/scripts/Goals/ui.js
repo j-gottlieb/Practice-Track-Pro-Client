@@ -1,4 +1,5 @@
 const store = require('../store.js')
+const progress = require('./progress.js')
 
 const showGoalsSuccess = function (response) {
   store.goals = response.goals

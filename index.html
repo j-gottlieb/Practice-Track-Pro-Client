@@ -19,57 +19,40 @@
   <div class="class-div col">
     <div id="display-message" class="display-message">
   </div>
-  </div>
-    <div class="signed_out row">
-      <div class="btn-group">
-        <button id="sign-up-btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          Sign-Up
-        </button>
-        <ul class="dropdown-menu">
-          <form id="sign-up-form">
-             <div class="form-group"><div class="form-group">
-               <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
-             </div>
-             <div class="form-group">
-               <input required name="credentials[password]" type="password" placeholder="Enter Password" />
-             </div>
-              <div class="form-group">
-               <input required name="credentials[password_confirmation]" type="password" placeholder="Confirm Password">
-             </div>
-               <div class="form-group">
-               </div>
-               <div class="form-group">
-               <input type="submit"/>
-             </div>
-             </div>
-          </form>
-        </ul>
-        </div>
-        <div class="btn-group">
-        <button id="sign-in-btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          Sign-In
-        </button>
-        <ul class="dropdown-menu">
-          <form id="sign-in-form">
-             <div class="form-group"><div class="form-group">
-               <input required type="email" name="credentials[email]" placeholder="Enter Email" />
-             </div>
-             <div class="form-group">
-               <input required name="credentials[password]" type="password" placeholder="Enter Password" />
-             </div>
-               <div class="form-group">
-               <input class="dropdown-item" type="submit" />
-             </div>
-             </div>
-          </form>
-        </ul>
-      </div>
-      <div class="btn-group">
-        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-controls="collapseExample">
-        About PTP
-        </button>
+  <div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">About</h4>
+      <span class="text-muted">PTP stores your practice sessions and goals so you can track
+        your progress and stay on course!</span>
     </div>
+  </div>
+  <div class="collapse" id="collapseExample">
+    <div class="row justify-content-between about card-body">
+      <div class="col-6">
+      PTP stores your practice sessions and goals so you can track
+        your progress and stay on course!
       </div>
+        <div class="col-6 align-items-end links">
+          <div>
+            <a class="linkedin" href="https://www.linkedin.com/in/jesse-gottlieb">LinkedIn</a>
+          </div>
+          <div>
+            <a class="github" href="https://github.com/j-gottlieb">Github</a>
+          </div>
+          <div>
+            <p class="created">Created by Jesse Gottlieb</p>
+          </div>
+  </div>
+</div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+  </div>
     <div class="signed_in hidden row">
       <div class="btn-group">
       <button id="change-password-btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -95,40 +78,35 @@
         Sign Out
       </button>
       </div>
-      <div class="btn-group">
-        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-controls="collapseExample">
-        About PTP
-        </button>
-    </div>
       </div>
     </nav>
 
     <div class="container">
-      <div class="collapse" id="collapseExample">
-        <div class="row justify-content-between about card-body">
-          <div class="col-6">
-          PTP stores your practice sessions and goals so you can track
-            your progress and stay on course!
-          </div>
-            <div class="col-6 align-items-end links">
-              <div>
-                <a class="linkedin" href="https://www.linkedin.com/in/jesse-gottlieb">LinkedIn</a>
-              </div>
-              <div>
-                <a class="github" href="https://github.com/j-gottlieb">Github</a>
-              </div>
-              <div>
-                <p class="created">Created by Jesse Gottlieb</p>
-              </div>
-      </div>
-    </div>
-      </div>
-    <div class="musical_notes">
+    <!-- <div class="musical_notes">
       <img alt="musical notes" class="img-fluid" src="./public/images/musical-notes.jpg"/>
-    </div>
+    </div> -->
+
+  <div class="jumbotron signed_out">
+    <div class="row">
+        <legend>Sign Up</legend>
+          <form id="sign-up-form">
+               <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
+               <input required name="credentials[password]" type="password" placeholder="Enter Password" />
+               <input required name="credentials[password_confirmation]" type="password" placeholder="Confirm Password">
+               <input type="submit"/>
+          </form>
+        <legend>Sign In</legend>
+          <form id="sign-in-form">
+               <input required type="email" name="credentials[email]" placeholder="Enter Email" />
+               <input required name="credentials[password]" type="password" placeholder="Enter Password" />
+               <input type="submit" />
+          </form>
+      </div>
+  </div>
+<!--
 <div class="mom">
 <h2>Did you practice today???</h2>
-</div>
+</div> -->
 <nav class="navbar progress-nav practice_header hidden">
 
   <div class="btn-group">
@@ -194,7 +172,11 @@
 </div>
 <div class="dash_message">
 </div>
-<div class="row justify-content-between hidden progress_dash goals">
+<div class="hidden progress_dash goals">
+  <div class="row justify-content-center">
+    <div class="progress_block col-3"><h4>Total: </h4><span id="total-progress"></span></div>
+  </div>
+  <div class="row justify-content-between">
     <div class="progress_block col-3">
       <h4>Daily: <span id="daily-goal"></span></h4>
       <div class='goal_daily'></div>
@@ -213,6 +195,7 @@
       <br>
       <p class="progress-message"id="monthly_message"></p>
     </div>
+  </div>
   </div>
 
   </div>

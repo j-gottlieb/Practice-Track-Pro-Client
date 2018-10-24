@@ -10,6 +10,7 @@ const onRemoveGoal = function (event) {
   if (confirm('Are you sure you want to delete this goal?')) {
     api.removeGoal(goalId)
       .then(() => onShowGoals(event))
+      .then(progress.getProgresses)
       .catch(ui.removeGoalFailure)
   }
 }
@@ -36,7 +37,8 @@ const onEditGoal = function (event) {
   }
   const goalData = store.goals[0]
   api.editGoal(goalData)
-    .then(ui.editGoalSuccess)
+    .then(() => onShowGoals(event))
+    .then(progress.getProgresses)
     .catch()
   $('#add-goal-form').trigger('reset')
 }
@@ -60,6 +62,8 @@ const onAddGoal = function (event) {
   const goalData = getFormFields(event.target)
   api.addGoal(goalData)
     .then(ui.addGoalSuccess)
+    .then(progress.getProgresses)
+    .then()
     .catch()
 }
 

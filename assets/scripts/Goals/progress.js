@@ -131,7 +131,53 @@ const showProgress = function (progress, location) {
   bar.animate(progress)
 }
 
+const showTotal = function (progress, location) {
+  const circle = new ProgressBar.Circle(location, {
+    strokeWidth: 6,
+    color: '#FFEA82',
+    trailColor: '#eee',
+    trailWidth: 1,
+    easing: 'easeInOut',
+    duration: 1400,
+    svgStyle: null,
+    text: {
+      value: '',
+      alignToBottom: false
+    },
+    from: {color: '#FFEA82'},
+    to: {color: '#01a32a'},
+    // Set default step function for all animate calls
+    step: (state, circle) => {
+      circle.path.setAttribute('stroke', state.color)
+      const value = Math.round(circle.value() * 100) + '%'
+      if (value === 0) {
+        circle.setText('')
+      } else {
+        circle.setText(`You are ${value} toward your 10,000 hours!`)
+      }
+      circle.text.style.color = state.color
+    }
+  })
+  circle.text.style.fontFamily = '"Raleway", Helvetica, sans-serif'
+  circle.text.style.fontSize = '.8rem'
+  circle.animate(progress)
+}
+
+const totalPractice = () => {
+  let total = 0
+  store.practices.forEach(function (practice) {
+    total += practice.duration
+  })
+  return total
+}
+
 const getProgresses = () => {
+  // console.log(store.practices)
+  // console.log(totalPractice())
+  const totalProgress = (totalPractice() / 10000)
+  // console.log(totalProgress)
+  $('#total-progress').html('')
+  showTotal(totalProgress, '#total-progress')
   const message = function (progress, id) {
     if (progress >= 0 && progress < 0.5) {
       $(id).html('Get to work!')

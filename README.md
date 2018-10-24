@@ -6,12 +6,13 @@ monthly goal, create a new practice instance with a date and duration, view your
 progress and sign out. Every practice instance and goal is editable. Users may
 only access their own data and must be logged in to do so.
 
-All data is stored in a custom api. You may find the repo for the PTP repo [here](https://github.com/j-gottlieb/Practice-Track-Pro-API)
+All data is stored in a custom api. You may find the repo for the PTP API repo [here](https://github.com/j-gottlieb/Practice-Track-Pro-API)
 
 
 ## Image Links
-[ERD](https://github.com/j-gottlieb/Practice-Track-Pro-Client/blob/master/public/images/ERD.jpg)
-[Wireframe](https://github.com/j-gottlieb/Practice-Track-Pro-Client/blob/master/public/images/Wireframe.jpg)
+*[ERD](https://github.com/j-gottlieb/Practice-Track-Pro-Client/blob/master/public/images/ERD.jpg)
+*[Wireframe](https://github.com/j-gottlieb/Practice-Track-Pro-Client/blob/master/public/images/Wireframe.jpg)
+*[API Repo](https://github.com/j-gottlieb/Practice-Track-Pro-API)
 
 
 ## Technologies Used

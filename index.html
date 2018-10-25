@@ -12,8 +12,8 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <nav class="navbar main-nav">
-      <div class="title col-5">
+      <nav class="navbar bg-dark main-nav justify-content-between">
+      <div class="title text-white col-5">
     <h1>Practice Track Pro</h1>
   </div>
   <div class="class-div col">
@@ -22,35 +22,22 @@
   <div class="pos-f-t">
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">
-      <h4 class="text-white">About</h4>
+      <!-- <h4 class="text-white">About</h4> -->
       <span class="text-muted">PTP stores your practice sessions and goals so you can track
         your progress and stay on course!</span>
     </div>
   </div>
+  <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+    About
+  </button>
   <div class="collapse" id="collapseExample">
     <div class="row justify-content-between about card-body">
       <div class="col-6">
       PTP stores your practice sessions and goals so you can track
         your progress and stay on course!
       </div>
-        <div class="col-6 align-items-end links">
-          <div>
-            <a class="linkedin" href="https://www.linkedin.com/in/jesse-gottlieb">LinkedIn</a>
-          </div>
-          <div>
-            <a class="github" href="https://github.com/j-gottlieb">Github</a>
-          </div>
-          <div>
-            <p class="created">Created by Jesse Gottlieb</p>
-          </div>
-  </div>
 </div>
-  </div>
-  <nav class="navbar navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav>
+</div>
 </div>
   </div>
     <div class="signed_in hidden row">
@@ -230,7 +217,13 @@
   </section>
     </div>
     <footer class="row justify-content-between">
-
+        <div class="col">
+          <a class="linkedin" href="https://www.linkedin.com/in/jesse-gottlieb">LinkedIn</a>
+          <a class="github col-2" href="https://github.com/j-gottlieb">Github</a>
+        </div>
+        <div class="col">
+          <p class="created">Created by Jesse Gottlieb</p>
+        </div>
   </footer>
 </div>
     </body>

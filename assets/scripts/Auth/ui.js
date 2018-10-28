@@ -38,11 +38,12 @@ const signInFailure = function () {
 }
 
 const changePasswordSuccess = function (response) {
+  $('#exampleModal').modal('hide')
   $('#display-message').html('').hide()
   $('#change-password-form').trigger('reset')
   $('#display-message').text(`Successfully changed password!`).fadeToggle().delay(1000).fadeToggle()
   $('#display-message').css('color', 'green')
-  $('#change-password-form').addClass('hidden')
+  // $('#change-password-form').addClass('hidden')
   $('#change-password-btn').dropdown('toggle')
 }
 
@@ -54,10 +55,12 @@ const changePasswordFailure = function () {
 }
 
 const signOutSuccess = function () {
+  $('#exampleModal').modal('hide')
   store.user = null
   store.goals = null
   store.practices = null
-  $('#display-message, #total-progress').html('').hide()
+  $('#display-message').html('').hide()
+  $('#total-progress').html('')
   $('#daily-goal, #weekly-goal, #monthly-goal').html('')
   $('.practice_display, .goal_daily, .goal_weekly, .goal_monthly, #daily_message, #weekly_message, #monthly_message').html('')
   $('.edit_form, #add-practices-form, #add-goal-form').trigger('reset')

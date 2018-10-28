@@ -174,10 +174,13 @@ const totalPractice = () => {
 const getProgresses = () => {
   // console.log(store.practices)
   // console.log(totalPractice())
-  const totalProgress = (totalPractice() / 10000)
+  const totalProgress = Math.round(100 * (totalPractice() / (100 * 60))) / 100
   // console.log(totalProgress)
-  $('#total-progress').html('')
-  showTotal(totalProgress, '#total-progress')
+  $('#total-progress').css('width', 0 + '%').attr('aria-valuenow', 0)
+  $('#total-progress').html(0 + '%')
+  $('#total-progress').css('width', totalProgress + '%').attr('aria-valuenow', totalProgress)
+  $('#total-progress').html(totalProgress + '%')
+  // showTotal(totalProgress, '#total-progress')
   const message = function (progress, id) {
     if (progress >= 0 && progress < 0.5) {
       $(id).html('Get to work!')

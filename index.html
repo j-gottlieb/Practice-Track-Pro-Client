@@ -12,40 +12,37 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <nav class="navbar bg-dark main-nav justify-content-between">
-      <div class="title text-white col-5">
+      <nav class="navbar row bg-dark main-nav">
+      <div class="title text-white col-2">
     <h1>Practice Track Pro</h1>
   </div>
-  <div class="class-div col">
-    <div id="display-message" class="display-message">
-  </div>
-  <div class="pos-f-t">
-  <div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
-      <!-- <h4 class="text-white">About</h4> -->
-      <span class="text-muted">PTP stores your practice sessions and goals so you can track
-        your progress and stay on course!</span>
-    </div>
-  </div>
-  <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="nav-btns">
+    <div>
+  <button class="navbar-toggler btn-default text-white" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
     About
   </button>
-  <div class="collapse" id="collapseExample">
-    <div class="row justify-content-between about card-body">
-      <div class="col-6">
-      PTP stores your practice sessions and goals so you can track
-        your progress and stay on course!
+</div>
+<div class="signed_in hidden">
+  <button type="button" class="navbar-toggler btn-default text-white" data-toggle="modal" data-target="#exampleModal">
+  User Actions
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User Actions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-</div>
-</div>
-</div>
-  </div>
-    <div class="signed_in hidden row">
-      <div class="btn-group">
-      <button id="change-password-btn" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-        Change <br> Password
-      </button>
-      <ul class="dropdown-menu">
+      <div class="modal-body row">
+        <div class="sign_out_btn col-4">
+        <button id="sign-out-form" type="button" class="btn" data-toggle="dropdown">
+          Sign Out
+        </button>
+        </div>
+        <div class="col">
+        <legend>Change Password:</legend>
         <form id="change-password-form">
            <div class="form-group"><div class="form-group">
              <input required type="password" name="passwords[old]" placeholder="Enter Old Password" />
@@ -58,17 +55,86 @@
            </div>
            </div>
         </form>
-      </ul>
       </div>
-      <div class="sign_out_btn btn-group">
-      <button id="sign-out-form" type="button" class="btn btn-default" data-toggle="dropdown">
-        Sign Out
-      </button>
+      <div class="modal-footer">
       </div>
-      </div>
+    </div>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
     </nav>
 
     <div class="container">
+
+    <div class="collapse row justify-content-between" id="navbarToggleExternalContent">
+        <!-- <h4 class="text-white">About</h4> -->
+        <span class="text-muted description col-6">PTP stores your practice sessions and goals so you can track
+          your progress and stay on course!</span>
+          <div class="about-footer">
+          <div class="text-muted links">
+            <a  href="https://github.com/j-gottlieb" class="github">
+            <img alt="github logo" style="margin-right:10px;" src="./public/images/GitHub-Mark-32px.png">
+            </a>
+            <a class="linkedin" href="https://www.linkedin.com/in/jesse-gottlieb">
+              <img alt="linkedin logo" src="./public/images/In-2C-28px-R.png">
+            </a>
+          </div>
+          <div class="text-muted">
+            <p>Created by Jesse Gottlieb</p>
+          </div>
+        </div>
+    </div>
+
+    <div class="display-gap">
+    <div id="display-message" class="display-message"></div>
+  </div>
+
+    <nav class="navbar progress-nav practice_header hidden">
+
+      <div class="btn-group">
+      <button id="add-practice-btn" class="btn dropdown-toggle hover_practice" data-toggle="dropdown">Add New Practice</button>
+      <ul class="dropdown-menu">
+    <form id="add-practice-form" class="dropdown-content single-form">
+      <div class="form-group">
+      <input required type='date' name="date" placeholder="When did you practice" />
+      </div>
+      <div class="form-group">
+      <input required type='number' min="0" name="duration" placeholder="# of minutes" />
+      </div>
+      <div class="form-group">
+      <input type="submit" />
+    </div>
+    </form>
+    </ul>
+    </div>
+
+      <div class="btn-group">
+      <button id="add-goal-btn" class="btn dropdown-toggle hover_practice" data-toggle="dropdown" type="submit" >Add/Edit Goals</button>
+      <ul class="dropdown-menu">
+      <form id="add-goal-form" class="dropdown-content single-form">
+        <div class="form-group">
+        <input type='number' min="0" name="daily" placeholder="Daily Goal in Mins" />
+        </div>
+        <div class="form-group">
+        <input type='number' min="0" name="weekly" placeholder="Weekly Goal in Mins" />
+      </div>
+        <div class="form-group">
+        <input type='number' min="0" name="monthly" placeholder="Monthly Goal in Mins" />
+      </div>
+        <div class="form-group">
+        <input type="submit" />
+        </div>
+      </form>
+    </ul>
+    </div>
+
+    <div class="btn-group">
+    <button class="btn display_progress_btn hover_practice" type="submit" data-toggle="collapse" data-target="#progress" >Show Progress</button>
+    </div>
+
+    </nav>
     <!-- <div class="musical_notes">
       <img alt="musical notes" class="img-fluid" src="./public/images/musical-notes.jpg"/>
     </div> -->
@@ -90,54 +156,6 @@
           </form>
       </div>
   </div>
-<!--
-<div class="mom">
-<h2>Did you practice today???</h2>
-</div> -->
-<nav class="navbar progress-nav practice_header hidden">
-
-  <div class="btn-group">
-  <button id="add-practice-btn" class="btn dropdown-toggle hover_practice" data-toggle="dropdown">Add New Practice</button>
-  <ul class="dropdown-menu">
-<form id="add-practice-form" class="dropdown-content single-form">
-  <div class="form-group">
-  <input required type='date' name="date" placeholder="When did you practice" />
-  </div>
-  <div class="form-group">
-  <input required type='number' name="duration" placeholder="# of minutes" />
-  </div>
-  <div class="form-group">
-  <input type="submit" />
-</div>
-</form>
-</ul>
-</div>
-
-  <div class="btn-group">
-  <button id="add-goal-btn" class="btn dropdown-toggle hover_practice" data-toggle="dropdown" type="submit" >Add/Edit Goals</button>
-  <ul class="dropdown-menu">
-  <form id="add-goal-form" class="dropdown-content single-form">
-    <div class="form-group">
-    <input type='number' min="0" name="daily" placeholder="Daily Goal in Mins" />
-    </div>
-    <div class="form-group">
-    <input type='number' min="0" name="weekly" placeholder="Weekly Goal in Mins" />
-  </div>
-    <div class="form-group">
-    <input type='number' min="0" name="monthly" placeholder="Monthly Goal in Mins" />
-  </div>
-    <div class="form-group">
-    <input type="submit" />
-    </div>
-  </form>
-</ul>
-</div>
-
-<div class="btn-group">
-<button class="btn display_progress_btn hover_practice" type="submit" data-toggle="collapse" data-target="#progress" >Show Progress</button>
-</div>
-
-</nav>
 
 <div id="new-goal-alert" class="alert alert-primary hidden alert-dismissible fade show" role="alert">
   New goals have been added.
@@ -160,8 +178,12 @@
 <div class="dash_message">
 </div>
 <div class="hidden progress_dash goals">
+  <h4>Total toward your 10,000 hours: </h4>
+  <div class="progress">
+  <div id="total-progress" class="progress-bar bg-info text-dark" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
   <div class="row justify-content-center">
-    <div class="progress_block col-3"><h4>Total: </h4><span id="total-progress"></span></div>
+    <div class="progress_block col-3"></div>
   </div>
   <div class="row justify-content-between">
     <div class="progress_block col-3">
@@ -213,17 +235,10 @@
   <h5>View/Edit Practices Below:</h5>
 </div>
   <section class='practices hidden'>
-    <div class='practice_display'></div>
+    <div class='practice_display text-white'></div>
   </section>
     </div>
     <footer class="row justify-content-between">
-        <div class="col">
-          <a class="linkedin" href="https://www.linkedin.com/in/jesse-gottlieb">LinkedIn</a>
-          <a class="github col-2" href="https://github.com/j-gottlieb">Github</a>
-        </div>
-        <div class="col">
-          <p class="created">Created by Jesse Gottlieb</p>
-        </div>
   </footer>
 </div>
     </body>

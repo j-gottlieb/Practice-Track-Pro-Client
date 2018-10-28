@@ -17,10 +17,11 @@ const removePracticeSuccess = () => {
   $('#remove-practice-alert').fadeTo(2000, 500).slideUp(500, function () {
     $('#remove-practice-alert').slideUp(500)
   })
-  // $(event.target.getAttribute('data-id')).empty()
 }
 
-const editPracticeSuccess = () => {
+const editPracticeSuccess = (response) => {
+  store.practices.pop()
+  store.practices.push(response.practice)
   $('#edit-practice-alert').removeClass('hidden')
   $('#edit-practice-alert').fadeTo(2000, 500).slideUp(500, function () {
     $('#edit-practice-alert').slideUp(500)

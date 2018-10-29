@@ -28,7 +28,10 @@ const onEditPractice = function (event) {
   if (getFormFields(event.target).duration) {
     practice.duration = parseInt(getFormFields(event.target).duration, 10)
   }
-  if (getFormFields(event.target).date === '' && getFormFields(event.target).duration === '') {
+  if (getFormFields(event.target).practice_type) {
+    practice.practice_type = getFormFields(event.target).practice_type
+  }
+  if (getFormFields(event.target).date === '' && getFormFields(event.target).duration === '' && getFormFields(event.target).practice_type === '') {
     $('#fail-practice-alert').removeClass('hidden')
     $('#fail-practice-alert').fadeTo(2000, 500).slideUp(500, function () {
       $('#fail-practice-alert').slideUp(500)

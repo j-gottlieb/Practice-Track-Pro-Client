@@ -31,7 +31,8 @@ const editPractice = function (practiceData, id) {
     data: {
       'practice': {
         'date': practiceData.date,
-        'duration': practiceData.duration
+        'duration': practiceData.duration,
+        'practice_type': practiceData.practice_type
       }
     }
   })

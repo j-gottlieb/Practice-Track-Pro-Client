@@ -3,6 +3,7 @@ const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('../store.js')
 const progress = require('../Goals/progress.js')
+const showPracticesTemplate = require('../templates/practices-listing.handlebars')
 
 const onRemovePractice = function (event) {
   event.preventDefault()
@@ -74,10 +75,28 @@ const onAddPractice = function (event) {
   $('#add-practice-btn').dropdown('toggle')
 }
 
+const onSearchPractices = function (event) {
+  event.preventDefault()
+  const practices = store.practices
+  const queriedPractices = []
+  for (let i = 0; i < practices.length; i++) {
+    if (practices[i].practice_type === getFormFields(event.target).practice_type) {
+      queriedPractices.push(practices[i])
+    }
+  }
+  const showPracticesHtml = showPracticesTemplate({ practices: queriedPractices })
+  if (queriedPractices.length > 0) {
+    $('.practice_display').html(showPracticesHtml)
+  } else {
+    $('.practice_display').html("You haven't practiced yet! What would your mother say...")
+  }
+}
+
 module.exports = {
   onShowPractices,
   addHandlers,
   onRemovePractice,
   onAddPractice,
-  onEditPractice
+  onEditPractice,
+  onSearchPractices
 }

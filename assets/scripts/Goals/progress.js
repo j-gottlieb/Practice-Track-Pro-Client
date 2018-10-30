@@ -1,6 +1,8 @@
 // pull in goals response
 const ProgressBar = require('progressbar.js')
 const store = require('../store.js')
+const moment = require('moment')
+moment().format()
 
 // create new function that takes daily/weekly/monthly goals
 // parse data from db to create a number to pass to showProgress
@@ -34,10 +36,35 @@ function toISOLocal (d) {
      ':' + z(d.getSeconds()) + sign + z(off/60|0) + z(off%60)
 }
 // collect all relevant days
-const today = new Date()
-const stopDate = today
-const aWeekAgo = today.subtractDays(7)
-const thirtyDaysAgo = today.subtractDays(30)
+const today = moment().format('YYYY/MM/DD')
+const startOfMonth = moment().startOf('month').format('YYYY/MM/DD')
+// const aWeekAgo = today.subtractDays(7)
+// const thirtyDaysAgo = today.subtractDays(30)
+
+// console.log(moment(today).isBefore(moment(startOfMonth)))
+// console.log(today)
+
+const monthRange = moment().range(moment(startOfMonth), moment(today))
+// const array = Array.from(monthRange.by('days'))
+
+console.log(monthRange)
+
+// const enumerateDaysBetweenDates = function (startDate, endDate) {
+//   const dates = []
+//
+//   const currDate = moment(startDate)
+//   const lastDate = moment(endDate)
+//
+//   while (moment(currDate).isSameOrBefore(moment(lastDate))) {
+//     console.log(currDate)
+//     dates.push(currDate)
+//     moment(currDate).add(1, 'days')
+//   }
+//
+//   return dates
+// }
+
+// console.log(enumerateDaysBetweenDates(startOfMonth, today))
 
 // this returns an array of the date range we are seeking
 function getDates (startDate, stopDate) {

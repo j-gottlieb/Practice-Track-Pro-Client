@@ -2,126 +2,69 @@
 const ProgressBar = require('progressbar.js')
 const store = require('../store.js')
 const moment = require('moment')
-moment().format()
+const MomentRange = require('moment-range')
+const Moment = MomentRange.extendMoment(moment)
 
-// create new function that takes daily/weekly/monthly goals
-// parse data from db to create a number to pass to showProgress
+// Declare variables to contain various ranges
+const weekStart = Moment().startOf('week')
+const monthStart = Moment().startOf('month')
+const today = Moment()
+const monthRange = Moment.range(monthStart, today)
+const weekRange = Moment.range(weekStart, today)
 
-// this adds a subtract days property to the Date prototype
-Date.prototype.subtractDays = function(days) {
-  const date = new Date(this.valueOf())
-  date.setDate(date.getDate() - days)
-  return date
-}
-// this adds an add days property to the Date prototype
-Date.prototype.addDays = function(days) {
-  const date = new Date(this.valueOf())
-  date.setDate(date.getDate() + days)
-  return date
-}
-// parse new Date() object into local date
-function toISOLocal (d) {
-  let z = n => (n < 10 ? '0' : '') + n
-  z = n => (n < 10 ? '0' : '') + n
-  let off = d.getTimezoneOffset()
-  off = d.getTimezoneOffset()
-  let sign = off < 0 ? '+' : '-'
-  sign = off < 0 ? '+' : '-'
-  off = Math.abs(off)
-  off = Math.abs(off)
-
-  return d.getFullYear() + '-' + z(d.getMonth() + 1) + '-' +
-     z(d.getDate()) + 'T' + z(d.getHours()) + ':' + z(d.getMinutes()) +
-     ':' + z(d.getSeconds()) + sign + z(off / 60|0) + z(off%60)
-     ':' + z(d.getSeconds()) + sign + z(off/60|0) + z(off%60)
-}
-// collect all relevant days
-const today = moment().format('YYYY/MM/DD')
-const startOfMonth = moment().startOf('month').format('YYYY/MM/DD')
-// const aWeekAgo = today.subtractDays(7)
-// const thirtyDaysAgo = today.subtractDays(30)
-
-// console.log(moment(today).isBefore(moment(startOfMonth)))
-// console.log(today)
-
-const monthRange = moment().range(moment(startOfMonth), moment(today))
-// const array = Array.from(monthRange.by('days'))
-
-console.log(monthRange)
-
-// const enumerateDaysBetweenDates = function (startDate, endDate) {
-//   const dates = []
-//
-//   const currDate = moment(startDate)
-//   const lastDate = moment(endDate)
-//
-//   while (moment(currDate).isSameOrBefore(moment(lastDate))) {
-//     console.log(currDate)
-//     dates.push(currDate)
-//     moment(currDate).add(1, 'days')
-//   }
-//
-//   return dates
-// }
-
-// console.log(enumerateDaysBetweenDates(startOfMonth, today))
-
-// this returns an array of the date range we are seeking
-function getDates (startDate, stopDate) {
-  const dateArray = []
-  let currentDate = startDate
-  while (currentDate <= stopDate) {
-    dateArray.push(new Date(currentDate))
-    currentDate = currentDate.addDays(1)
-  }
-  const parsedArray = []
-  for (let j = 0; j < dateArray.length; j++) {
-    for (let j = 0; j < dateArray.length; j++) {
-      parsedArray.push(toISOLocal(dateArray[j]).split('T')[0])
-    }
-    return parsedArray
-  }
-}
-
-const todayDuration = () => {
-  const todaysPractices = store.practices.filter(function (practice) {
-    return practice.date === toISOLocal(stopDate).split('T')[0]
-  })
-  let result = 0
-  if (todaysPractices.length === 1) {
-    result += todaysPractices[0].duration
-  } else if (todaysPractices.length === 0) {
-    return result
-  } else {
-    for (let i = 0; i < todaysPractices.length; i++) {
-      result += todaysPractices[i].duration
-    }
-  }
-  return result
-}
-const weekDuration = () => {
-  let result = 0
-  const dateArray = getDates(aWeekAgo, stopDate)
-  store.practices.forEach(function (practice) {
-    for (let i = 0; i < dateArray.length; i++) {
-      if (practice.date === dateArray[i]) {
-        result += practice.duration
-      }
-    }
-  })
-  return result
-}
+// Get total practice from the start of the month
 const monthDuration = () => {
   let result = 0
-  const dateArray = getDates(thirtyDaysAgo, stopDate)
-  store.practices.forEach(function (practice) {
-    for (let i = 0; i < dateArray.length; i++) {
-      if (practice.date === dateArray[i]) {
-        result += practice.duration
-      }
+  store.practices.forEach((day) => {
+    if (Moment(day.date).within(monthRange)) {
+      result += day.duration
     }
   })
   return result
+}
+
+// Get total practice from the start of the week (sunday)
+const weekDuration = () => {
+  let result = 0
+  store.practices.forEach((day) => {
+    if (Moment(day.date).within(weekRange)) {
+      result += day.duration
+    }
+  })
+  return result
+}
+
+// Get today's practice
+const todayDuration = () => {
+  let result = 0
+  store.practices.forEach((day) => {
+    if (Moment(day.date) === today) {
+      result += day.duration
+    }
+  })
+  return result
+}
+
+// Get practice duration given the user's range input
+const rangeDuration = (start, end) => {
+  const range = Moment.range(Moment(start), Moment(end))
+  let result = 0
+  store.practices.forEach((day) => {
+    if (Moment(day.date).within(range)) {
+      result += day.duration
+    }
+  })
+  return result
+}
+
+
+// Get total all-time practice
+const totalPractice = () => {
+  let total = 0
+  store.practices.forEach(function (practice) {
+    total += practice.duration
+  })
+  return total
 }
 
 const showProgress = function (progress, location) {
@@ -158,47 +101,11 @@ const showProgress = function (progress, location) {
   bar.animate(progress)
 }
 
-const showTotal = function (progress, location) {
-  const circle = new ProgressBar.Circle(location, {
-    strokeWidth: 6,
-    color: '#FFEA82',
-    trailColor: '#eee',
-    trailWidth: 1,
-    easing: 'easeInOut',
-    duration: 1400,
-    svgStyle: null,
-    text: {
-      value: '',
-      alignToBottom: false
-    },
-    from: {color: '#FFEA82'},
-    to: {color: '#01a32a'},
-    // Set default step function for all animate calls
-    step: (state, circle) => {
-      circle.path.setAttribute('stroke', state.color)
-      const value = Math.round(circle.value() * 100) + '%'
-      if (value === 0) {
-        circle.setText('')
-      } else {
-        circle.setText(`You are ${value} toward your 10,000 hours!`)
-      }
-      circle.text.style.color = state.color
-    }
-  })
-  circle.text.style.fontFamily = '"Raleway", Helvetica, sans-serif'
-  circle.text.style.fontSize = '.8rem'
-  circle.animate(progress)
-}
-
-const totalPractice = () => {
-  let total = 0
-  store.practices.forEach(function (practice) {
-    total += practice.duration
-  })
-  return total
-}
-
 const getProgresses = () => {
+  console.log(monthDuration())
+  console.log(weekDuration())
+  console.log(todayDuration())
+  console.log(rangeDuration('2018/10/01', '2018/10/29'))
   // console.log(store.practices)
   // console.log(totalPractice())
   const totalProgress = Math.round(100 * (totalPractice() / (100 * 60))) / 100
@@ -251,5 +158,6 @@ const getProgresses = () => {
 }
 
 module.exports = {
-  getProgresses
+  getProgresses,
+  rangeDuration
 }

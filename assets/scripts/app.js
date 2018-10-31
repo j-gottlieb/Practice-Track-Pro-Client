@@ -24,4 +24,5 @@ $(() => {
   // $('#show-practices-btn').on('click', practiceEvents.onShowPractices)
   $('#add-practice-form').on('submit', practiceEvents.onAddPractice)
   $('#search-practices').on('submit', practiceEvents.onSearchPractices)
+  $('#view-range-duration').on('submit', practiceEvents.onViewDuration)
 })

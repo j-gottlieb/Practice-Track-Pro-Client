@@ -92,11 +92,20 @@ const onSearchPractices = function (event) {
   }
 }
 
+const onViewDuration = function (event) {
+  event.preventDefault()
+  const startDate = getFormFields(event.target).start_date
+  const endDate = getFormFields(event.target).end_date
+  const duration = progress.rangeDuration(startDate, endDate)
+  $('#range-duration-display').html(duration)
+}
+
 module.exports = {
   onShowPractices,
   addHandlers,
   onRemovePractice,
   onAddPractice,
   onEditPractice,
-  onSearchPractices
+  onSearchPractices,
+  onViewDuration
 }

@@ -100,31 +100,6 @@
     </ul>
     </div>
 
-    <div class="btn-group">
-    <button id="view-range-btn" class="btn dropdown-toggle hover_practice" data-toggle="dropdown">View total practice in date range</button>
-    <ul class="dropdown-menu">
-  <form id="view-range-duration" class="dropdown-content single-form">
-    <div class="form-group">
-    <input required type='date' name="start_date" placeholder="Start date" />
-    </div>
-    <div class="form-group">
-    <input required type='date' name="end_date" placeholder="End date" />
-    </div>
-    <div class="form-group">
-      <label for="exampleDropdownFormEmail1">Type:</label>
-      <input type="string" name="practice_type" class="form-control" id="type-query" placeholder="i.e. scales">
-    </div>
-    <div class="form-group">
-    <input type="submit" />
-  </div>
-  </form>
-  </ul>
-  </div>
-
-  <div>
-    <h3 id='range-duration-display'></h3>
-  </div>
-
       <div class="btn-group">
       <button id="add-goal-btn" class="btn dropdown-toggle hover_practice" data-toggle="dropdown" type="submit" >Add/Edit Goals</button>
       <ul class="dropdown-menu">
@@ -148,6 +123,10 @@
     <div class="btn-group">
     <button class="btn display_progress_btn hover_practice" type="submit" data-toggle="collapse" data-target="#progress" >Show Progress</button>
     </div>
+
+    <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+    Get total practice by range and type
+  </button>
 
     </nav>
     <!-- <div class="musical_notes">
@@ -245,6 +224,48 @@
     </button>
   </div>
 
+<section class="signed_in hidden">
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="view-range-duration" class="dropdown-content single-form">
+          <div class="form-group">
+          <input type='date' name="start_date" placeholder="Start date" />
+          </div>
+          <div class="form-group">
+          <input type='date' name="end_date" placeholder="End date" />
+          </div>
+          <div class="form-group">
+            <label for="exampleDropdownFormEmail1">Type:</label>
+            <input type="string" name="practice_type" class="form-control" id="type-query" placeholder="i.e. scales">
+          </div>
+          <div class="form-group">
+          <input type="submit" />
+        </div>
+        </form>
+        <!-- </ul>
+        </div> -->
+        <div class="col">
+          <h3 id='range-duration-display'></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+  <div class="practice_index hidden">
+    <div class="p_header">
+  <h5>View/Edit Practices Below:</h5>
   <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Search Practice by Type
@@ -259,10 +280,6 @@
     </form>
   </div>
 </div>
-
-  <div class="practice_index hidden">
-    <div class="p_header">
-  <h5>View/Edit Practices Below:</h5>
 </div>
   <section class='practices hidden'>
     <div class='practice_display text-white'></div>

@@ -37,11 +37,14 @@ const weekDuration = () => {
 // Get today's practice
 const todayDuration = () => {
   let result = 0
+  const today = Moment().format('YYYY-MM-DD')
   store.practices.forEach((day) => {
-    if (Moment(day.date) === today) {
+    console.log(Moment(day.date).format('YYYY-MM-DD'))
+    if (Moment(day.date).format('YYYY-MM-DD') === today) {
       result += day.duration
     }
   })
+  // console.log(result)
   return result
 }
 
@@ -49,11 +52,30 @@ const todayDuration = () => {
 const rangeDurationTypeQuery = (start, end, type) => {
   const range = Moment.range(Moment(start), Moment(end))
   let result = 0
-  store.practices.forEach((day) => {
-    if (Moment(day.date).within(range) && day.practice_type === type) {
-      result += day.duration
-    }
-  })
+  if (start && !end) {
+    result = 'Please select end date'
+  } else if (start && end && type) {
+    store.practices.forEach((day) => {
+      if (Moment(day.date).within(range) && day.practice_type === type) {
+        result += day.duration
+      }
+    })
+  } else if (!type) {
+    store.practices.forEach((day) => {
+      if (Moment(day.date).within(range)) {
+        result += day.duration
+      }
+    })
+  } else if (!start && !end) {
+    store.practices.forEach((day) => {
+      if (day.practice_type === type) {
+        result += day.duration
+      }
+    })
+  }
+  if (typeof result === 'number') {
+    result += ' minutes'
+  }
   return result
 }
 

@@ -1,6 +1,7 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const practice = require('../Practices/events.js')
 // const store = require('../store.js')
 
 const onSignUp = function (event) {
@@ -32,6 +33,7 @@ const onSignIn = function (event) {
   const credentials = getFormFields(event.target)
   api.signIn(credentials)
     .then(ui.signInSuccess)
+    .then(practice.onShowPractices)
     .catch(ui.signInFailure)
 }
 

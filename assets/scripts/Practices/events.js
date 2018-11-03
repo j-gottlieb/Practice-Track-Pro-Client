@@ -96,7 +96,8 @@ const onViewDuration = function (event) {
   event.preventDefault()
   const startDate = getFormFields(event.target).start_date
   const endDate = getFormFields(event.target).end_date
-  const duration = progress.rangeDuration(startDate, endDate)
+  const type = getFormFields(event.target).practice_type
+  const duration = progress.rangeDurationTypeQuery(startDate, endDate, type)
   $('#range-duration-display').html(duration)
 }
 

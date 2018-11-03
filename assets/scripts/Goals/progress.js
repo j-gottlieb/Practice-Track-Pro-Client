@@ -46,17 +46,16 @@ const todayDuration = () => {
 }
 
 // Get practice duration given the user's range input
-const rangeDuration = (start, end) => {
+const rangeDurationTypeQuery = (start, end, type) => {
   const range = Moment.range(Moment(start), Moment(end))
   let result = 0
   store.practices.forEach((day) => {
-    if (Moment(day.date).within(range)) {
+    if (Moment(day.date).within(range) && day.practice_type === type) {
       result += day.duration
     }
   })
   return result
 }
-
 
 // Get total all-time practice
 const totalPractice = () => {
@@ -102,10 +101,6 @@ const showProgress = function (progress, location) {
 }
 
 const getProgresses = () => {
-  console.log(monthDuration())
-  console.log(weekDuration())
-  console.log(todayDuration())
-  console.log(rangeDuration('2018/10/01', '2018/10/29'))
   // console.log(store.practices)
   // console.log(totalPractice())
   const totalProgress = Math.round(100 * (totalPractice() / (100 * 60))) / 100
@@ -159,5 +154,5 @@ const getProgresses = () => {
 
 module.exports = {
   getProgresses,
-  rangeDuration
+  rangeDurationTypeQuery
 }

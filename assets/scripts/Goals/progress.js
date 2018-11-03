@@ -39,7 +39,6 @@ const todayDuration = () => {
   let result = 0
   const today = Moment().format('YYYY-MM-DD')
   store.practices.forEach((day) => {
-    console.log(Moment(day.date).format('YYYY-MM-DD'))
     if (Moment(day.date).format('YYYY-MM-DD') === today) {
       result += day.duration
     }

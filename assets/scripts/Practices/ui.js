@@ -2,6 +2,30 @@ const store = require('../store.js')
 const showPracticesTemplate = require('../templates/practices-listing.handlebars')
 const progress = require('../Goals/progress.js')
 
+const moment = require('moment')
+const MomentRange = require('moment-range')
+const Moment = MomentRange.extendMoment(moment)
+
+const progressByType = function () {
+  const practicesByType = {}
+  const today = Moment()
+  const weekStart = Moment().startOf('week')
+  const weekRange = Moment.range(weekStart, today)
+  for (let i = 0; i < store.practices.length; i++) {
+    practicesByType[store.practices[i].practice_type] = 0
+  }
+  for (let i = 0; i < store.practices.length; i++) {
+    if (Moment(store.practices[i].date).within(weekRange)) {
+      practicesByType[store.practices[i].practice_type] += store.practices[i].duration
+    }
+  }
+  for (const key in practicesByType) {
+    if (key) {
+      $('#type-progress').append(`${key}: <span style='color:blue'>${practicesByType[key]}</span>    `)
+    }
+  }
+}
+
 const showPracticesSuccess = function (response) {
   store.practices = response.practices
   const showPracticesHtml = showPracticesTemplate({ practices: response.practices })
@@ -11,6 +35,7 @@ const showPracticesSuccess = function (response) {
     $('.practice_display').html("You haven't practiced yet! What would your mother say...")
   }
   progress.getProgresses()
+  progressByType()
 }
 
 const removePracticeSuccess = () => {

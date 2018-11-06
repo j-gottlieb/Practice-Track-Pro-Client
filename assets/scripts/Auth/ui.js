@@ -60,7 +60,7 @@ const signOutSuccess = function () {
   store.goals = null
   store.practices = null
   $('#display-message').html('').hide()
-  $('#total-progress').html('')
+  $('#total-progress, #type-progress').html('')
   $('#daily-goal, #weekly-goal, #monthly-goal').html('')
   $('.practice_display, .goal_daily, .goal_weekly, .goal_monthly, #daily_message, #weekly_message, #monthly_message').html('')
   $('.edit_form, #add-practices-form, #add-goal-form').trigger('reset')

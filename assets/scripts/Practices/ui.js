@@ -7,6 +7,7 @@ const MomentRange = require('moment-range')
 const Moment = MomentRange.extendMoment(moment)
 
 const progressByType = function () {
+  $('#type-progress').html('')
   const practicesByType = {}
   const today = Moment()
   const weekStart = Moment().startOf('week')

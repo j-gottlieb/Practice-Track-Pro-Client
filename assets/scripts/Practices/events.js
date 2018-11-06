@@ -90,6 +90,8 @@ const onSearchPractices = function (event) {
   } else {
     $('.practice_display').html("You haven't practiced yet! What would your mother say...")
   }
+  $('#search-practices').trigger('reset')
+  $('#searchPracticesDropdown').dropdown('toggle')
 }
 
 const onViewDuration = function (event) {

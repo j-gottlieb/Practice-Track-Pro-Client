@@ -128,6 +128,10 @@
     Get total practice by range and type
   </button>
 
+  <button type="button" class="btn" data-toggle="modal" data-target="#practicesModal">
+  Search Practices
+</button>
+
     </nav>
     <!-- <div class="musical_notes">
       <img alt="musical notes" class="img-fluid" src="./public/images/musical-notes.jpg"/>
@@ -263,28 +267,44 @@
 
 </section>
 
-  <div class="practice_index hidden">
-    <div class="p_header">
-  <h5>View/Edit Practices Below:</h5>
-  <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Search Practice by Type
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <form id="search-practices"class="px-4 py-3">
-      <div class="form-group">
-        <label for="exampleDropdownFormEmail1">Type:</label>
-        <input type="string" name="practice_type" class="form-control" id="type-search" placeholder="i.e. scales">
+<div class="modal fade" id="practicesModal" tabindex="-1" role="dialog" aria-labelledby="practicesModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="practicesModalLabel">Search practices</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+      <div class="modal-body">
+        <div class="practice_index hidden">
+          <div class="p_header">
+        <h5>View/Edit Practices Below:</h5>
+        <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="searchPracticesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Search Practice by Type
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <form id="search-practices"class="px-4 py-3">
+            <div class="form-group">
+              <label for="exampleDropdownFormEmail1">Type:</label>
+              <input type="string" name="practice_type" class="form-control" id="type-search" placeholder="i.e. scales">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      </div>
+        <section class='practices hidden'>
+          <div class='practice_display text-white'></div>
+        </section>
+          </div>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-  <section class='practices hidden'>
-    <div class='practice_display text-white'></div>
-  </section>
-    </div>
+
+
     <footer class="row justify-content-between">
   </footer>
 </div>

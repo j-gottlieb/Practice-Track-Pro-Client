@@ -10,6 +10,7 @@ const showPracticesSuccess = function (response) {
   } else {
     $('.practice_display').html("You haven't practiced yet! What would your mother say...")
   }
+  progress.getProgresses()
 }
 
 const removePracticeSuccess = () => {

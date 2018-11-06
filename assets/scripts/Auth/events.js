@@ -2,6 +2,7 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
 const practice = require('../Practices/events.js')
+const progress = require('../Goals/progress')
 // const store = require('../store.js')
 
 const onSignUp = function (event) {

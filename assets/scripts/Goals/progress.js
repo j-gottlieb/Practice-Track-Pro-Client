@@ -122,7 +122,7 @@ const showProgress = function (progress, location) {
 }
 
 const getProgresses = () => {
-  // console.log(store.practices)
+  $('.progress-collapse').collapse('show')
   // console.log(totalPractice())
   const totalProgress = Math.round(100 * (totalPractice() / (100 * 60))) / 100
   // console.log(totalProgress)

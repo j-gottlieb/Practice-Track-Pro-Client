@@ -78,8 +78,11 @@
     <div id="display-message" class="display-message"></div>
   </div>
 
-    <nav class="navbar progress-nav practice_header hidden">
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light progress-nav practice_header hidden">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <div class="btn-group">
       <button id="add-practice-btn" class="btn dropdown-toggle hover_practice" data-toggle="dropdown">Add New Practice</button>
       <ul class="dropdown-menu">
@@ -125,13 +128,13 @@
     </div>
 
     <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
-    Get total practice by range and type
+    Custom Range Progress
   </button>
 
   <button type="button" class="btn" data-toggle="modal" data-target="#practicesModal">
   Search Practices
 </button>
-
+</div>
     </nav>
     <!-- <div class="musical_notes">
       <img alt="musical notes" class="img-fluid" src="./public/images/musical-notes.jpg"/>
@@ -170,12 +173,12 @@
 </div>
 
 <div class="collapse progress-collapse" id="progress">
-<div class="refresh_progress_btn">
-<button class="btn refresh refresh_progress_btn hover_practice" type="button" aria-expanded="false" aria-controls="collapseExample">Refresh Progress</button>
-</div>
 <div class="dash_message">
 </div>
 <div class="hidden progress_dash goals">
+  <div>
+  <button class="btn refresh refresh_progress_btn hover_practice" type="button" aria-expanded="false" aria-controls="collapseExample">Refresh Progress</button>
+  </div>
   <h4>Total toward your 10,000 hours: </h4>
   <div class="progress">
   <div id="total-progress" class="progress-bar bg-info text-dark" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
@@ -183,7 +186,7 @@
   <div class="row justify-content-center">
     <div class="progress_block col-3"></div>
   </div>
-  <div class="row justify-content-between">
+  <div class="row justify-content-around">
     <div class="progress_block col-3">
       <h4>Daily: <span id="daily-goal"></span></h4>
       <div class='goal_daily'></div>
@@ -203,7 +206,8 @@
       <p class="progress-message"id="monthly_message"></p>
     </div>
   </div>
-    <h3 id="type-progress"></h3>
+    <h2 >Total practice since Sunday:</h2>
+    <h3  id="type-progress"></h3>
   </div>
 
   </div>
@@ -235,7 +239,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">How much did you practice?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Practice time by range and/or type</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -253,7 +257,7 @@
             <input type="string" name="practice_type" class="form-control" id="type-query" placeholder="i.e. scales">
           </div>
           <div class="form-group">
-          <input type="submit" />
+          <button type="submit">Submit</button>
         </div>
         </form>
         <!-- </ul>

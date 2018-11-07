@@ -13,7 +13,9 @@ const progressByType = function () {
   const weekStart = Moment().startOf('week')
   const weekRange = Moment.range(weekStart, today)
   for (let i = 0; i < store.practices.length; i++) {
-    practicesByType[store.practices[i].practice_type] = 0
+    if (Moment(store.practices[i].date).within(weekRange)) {
+      practicesByType[store.practices[i].practice_type] = 0
+    }
   }
   for (let i = 0; i < store.practices.length; i++) {
     if (Moment(store.practices[i].date).within(weekRange)) {
@@ -22,7 +24,7 @@ const progressByType = function () {
   }
   for (const key in practicesByType) {
     if (key) {
-      $('#type-progress').append(`${key}: <span style='color:blue'>${practicesByType[key]}</span>    `)
+      $('#type-progress').append(`${key}: <span style='color:#013a4f'>${practicesByType[key]}</span>    `)
     }
   }
 }

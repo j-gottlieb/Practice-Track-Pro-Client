@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>PTP</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <nav class="navbar row bg-dark main-nav">
+      <div class="title text-white col-2">
+    <h1>Practice Track Pro</h1>
+  </div>
+  <div class="nav-btns">
+    <div>
+  <button class="navbar-toggler btn-default text-white" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+    About
+  </button>
+</div>
+<div class="signed_in hidden">
+  <button type="button" class="navbar-toggler btn-default text-white" data-toggle="collapse" data-target="#user-content">
+  User Actions
+</button>
+    </div>
+  </div>
+    </nav>
+
+    <div class="container">
+
+    <div class="collapse row justify-content-between" id="navbarToggleExternalContent">
+        <!-- <h4 class="text-white">About</h4> -->
+        <span class="text-muted description col-6">PTP stores your practice sessions and goals so you can track
+          your progress and stay on course!</span>
+          <div class="about-footer">
+          <div class="text-muted links">
+            <a  href="https://github.com/j-gottlieb" class="github">
+            <img alt="github logo" style="margin-right:10px;" src="./public/images/GitHub-Mark-32px.png">
+            </a>
+            <a class="linkedin" href="https://www.linkedin.com/in/jesse-gottlieb">
+              <img alt="linkedin logo" src="./public/images/In-2C-28px-R.png">
+            </a>
+          </div>
+          <div class="text-muted">
+            <p>Created by Jesse Gottlieb</p>
+          </div>
+        </div>
+    </div>
+
+    <div class="collapse row justify-content-between" id="user-content">
+        <div class="sign_out_btn col-4">
+        <button id="sign-out-form" type="button" class="btn" data-toggle="dropdown">
+          Sign Out
+        </button>
+        </div>
+        <div class="col">
+        <legend>Change Password:</legend>
+        <form id="change-password-form">
+           <div class="form-group"><div class="form-group">
+             <input required type="password" name="passwords[old]" placeholder="Enter Old Password" />
+           </div>
+           <div class="form-group">
+             <input required type="password" name="passwords[new]" placeholder="Enter New Password" />
+           </div>
+             <div class="form-group">
+             <input class="dropdown-item" type="submit" />
+           </div>
+           </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="display-gap">
+    <div id="display-message" class="display-message"></div>
+  </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light progress-nav practice_header hidden">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-around" id="navbarSupportedContent">
+      <div class="btn-group">
+      <button id="add-practice-btn" class="btn dropdown-toggle hover_practice" data-toggle="dropdown">Add New Practice</button>
+      <ul class="dropdown-menu">
+    <form id="add-practice-form" class="dropdown-content single-form">
+      <div class="form-group">
+      <input required type='date' name="date" placeholder="When did you practice" />
+      </div>
+      <div class="form-group">
+      <input required type='number' min="0" name="duration" placeholder="# of minutes" />
+      </div>
+      <div class="form-group">
+      <input required type='string' name="practice_type" placeholder="Type of practice" />
+      </div>
+      <div class="form-group">
+      <input type="submit" />
+    </div>
+    </form>
+    </ul>
+    </div>
+
+      <div class="btn-group">
+      <button id="add-goal-btn" class="btn dropdown-toggle hover_practice" data-toggle="dropdown" type="submit" >Add/Edit Goals</button>
+      <ul class="dropdown-menu">
+      <form id="add-goal-form" class="dropdown-content single-form">
+        <div class="form-group">
+        <input type='number' min="0" name="daily" placeholder="Daily Goal in Mins" />
+        </div>
+        <div class="form-group">
+        <input type='number' min="0" name="weekly" placeholder="Weekly Goal in Mins" />
+      </div>
+        <div class="form-group">
+        <input type='number' min="0" name="monthly" placeholder="Monthly Goal in Mins" />
+      </div>
+        <div class="form-group">
+        <input type="submit" />
+        </div>
+      </form>
+    </ul>
+    </div>
+
+    <div class="btn-group">
+    <button class="btn display_progress_btn hover_practice" type="submit" data-toggle="collapse" data-target="#progress" >Show/Hide Progress</button>
+    </div>
+
+    <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+    Custom Range Progress
+  </button>
+
+  <button type="button" class="btn" data-toggle="modal" data-target="#practicesModal">
+  Search Practices
+</button>
+</div>
+    </nav>
+    <!-- <div class="musical_notes">
+      <img alt="musical notes" class="img-fluid" src="./public/images/musical-notes.jpg"/>
+    </div> -->
+
+  <div class="jumbotron signed_out">
+    <div class="row">
+      <p>Please note, this site is not secure. Use username: a@a, password: a to log in.</p>
+        <legend>Sign Up</legend>
+          <form id="sign-up-form">
+               <input required type="email" name="credentials[email]" placeholder="Enter Email"/>
+               <input required name="credentials[password]" type="password" placeholder="Enter Password" />
+               <input required name="credentials[password_confirmation]" type="password" placeholder="Confirm Password">
+               <input type="submit"/>
+          </form>
+        <legend>Sign In</legend>
+          <form id="sign-in-form">
+               <input required type="email" name="credentials[email]" placeholder="Enter Email" />
+               <input required name="credentials[password]" type="password" placeholder="Enter Password" />
+               <input type="submit" />
+          </form>
+      </div>
+  </div>
+
+<div id="new-goal-alert" class="alert alert-primary hidden alert-dismissible fade show" role="alert">
+  New goals have been added.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div id="new-practice-alert" class="alert alert-success hidden alert-dismissible fade show" role="alert">
+  New practice was added.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="collapse progress-collapse" id="progress">
+<div class="dash_message">
+</div>
+<div class="hidden progress_dash goals">
+  <div>
+  <button class="btn refresh refresh_progress_btn hover_practice" type="button" aria-expanded="false" aria-controls="collapseExample">Refresh Progress</button>
+  </div>
+  <h4>Total toward your 10,000 hours: </h4>
+  <div class="progress">
+  <div id="total-progress" class="progress-bar bg-info text-dark" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+  <div class="row justify-content-center">
+    <div class="progress_block col-3"></div>
+  </div>
+  <div class="row justify-content-around">
+    <div class="progress_block col-3">
+      <h4>Daily: <span id="daily-goal"></span></h4>
+      <div class='goal_daily'></div>
+      <br>
+      <p class="progress-message"id="daily_message"></p>
+    </div>
+    <div class="progress_block col-3">
+      <h4>Weekly: <span id="weekly-goal"></span></h4>
+      <div class='goal_weekly'></div>
+      <br>
+      <p class="progress-message"id="weekly_message"></p>
+    </div>
+    <div class="progress_block col-3">
+      <h4>Monthly: <span id="monthly-goal"></span></h4>
+      <div class="goal_monthly"></div>
+      <br>
+      <p class="progress-message"id="monthly_message"></p>
+    </div>
+  </div>
+    <h2 >Total practice since Sunday:</h2>
+    <h3  id="type-progress"></h3>
+  </div>
+
+  </div>
+
+  <div id="edit-practice-alert" class="alert alert-primary hidden alert-dismissible fade show" role="alert">
+    Practice was succesfully edited.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div id="remove-practice-alert" class="alert alert-danger hidden alert-dismissible fade show" role="alert">
+    Practice was deleted.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div id="fail-practice-alert" class="alert alert-warning hidden alert-dismissible fade show" role="alert">
+    Please enter some parameters before updating the practice.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+<section class="signed_in hidden">
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Practice time by range and/or type</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="view-range-duration" class="dropdown-content single-form">
+          <div class="form-group">
+          <input type='date' name="start_date" placeholder="Start date" />
+          </div>
+          <div class="form-group">
+          <input type='date' name="end_date" placeholder="End date" />
+          </div>
+          <div class="form-group">
+            <label for="exampleDropdownFormEmail1">Type:</label>
+            <input type="string" name="practice_type" class="form-control" id="type-query" placeholder="i.e. scales">
+          </div>
+          <div class="form-group">
+          <button type="submit">Submit</button>
+        </div>
+        </form>
+        <!-- </ul>
+        </div> -->
+        <div class="col">
+          <h3 id='range-duration-display'></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<div class="modal fade" id="practicesModal" tabindex="-1" role="dialog" aria-labelledby="practicesModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="practicesModalLabel">Search practices</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="practice_index hidden">
+          <div class="p_header">
+        <h5>View/Edit Practices Below:</h5>
+        <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="searchPracticesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Search Practice by Type
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <form id="search-practices"class="px-4 py-3">
+            <div class="form-group">
+              <label for="exampleDropdownFormEmail1">Type:</label>
+              <input type="string" name="practice_type" class="form-control" id="type-search" placeholder="i.e. scales">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      </div>
+        <section class='practices hidden'>
+          <div class='practice_display text-white'></div>
+        </section>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <footer class="row justify-content-between">
+  </footer>
+</div>
+    </body>
+</html>
